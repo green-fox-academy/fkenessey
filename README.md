@@ -1,5 +1,5 @@
 # fkenessey
-<p>My other repos:</p>
+My other repos:
 [git-lesson-repository](https://github.com/fkenessey/git-lesson-repository.git)
 [hello-wrold](https://github.com/fkenessey/hello-world.git)
 [patchwork](https://github.com/fkenessey/patchwork.git)
