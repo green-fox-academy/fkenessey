@@ -1,0 +1,23 @@
+p {
+    background-color: aqua;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.top div {
+    border: 1px solid aqua;
+    margin: 5px;
+    width: 740px;
+    height: 70px;
+    padding: 10px;
+}
+
+div[class="second"] {
+    background-color: orange;
+}
+
+.second p {
+    background-color: palevioletred;
+}

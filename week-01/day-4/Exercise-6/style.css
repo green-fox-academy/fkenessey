@@ -1,0 +1,24 @@
+p {
+    background-color: deepskyblue;
+    color: white;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+    /*display: flex;
+    align-items: center;
+    justify-content: center;*/
+    display:inline-block;
+    font-size: 36px;
+    font-family: arial;
+    font-weight: bold;
+    text-align: center;
+    line-height: 450%;
+}
+
+.first p:first-of-type {
+    background-color: purple;
+}
+
+.second p:last-of-type {
+    background-color: orange;
+}

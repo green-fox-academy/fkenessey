@@ -1,0 +1,16 @@
+div {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    
+}
+
+div:hover {
+    background-color: rosybrown;
+}
+
+p {
+    margin: 0 5px 5px 5px;
+    padding: 10px 5px 5px 5px;
+    font-size: 18px;
+}
