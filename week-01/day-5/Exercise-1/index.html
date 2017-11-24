@@ -7,6 +7,7 @@
     </head>
     <body>
         <div class="first">
+            <form>
             <div class="top">
                 <p>Profil</p>
             </div>
@@ -18,12 +19,43 @@
                         <input type="text" placeholder="Vezeteknev Keresztnev" required/>
                     </fieldset>
                 </form>
-                <div class="small1"></div>
-                <div class="small1"></div>
-                <div class="small2"></div>
+                <div class="small1">
+                    <legend>Szuletesi eved</legend>
+                    <input type="text" placeholder="pl. 1984"/>
+                </div>
+                <div class="small1">
+                    <legend>Nemed</legend>
+                    <input type="radio" id="female" name="gender"/>
+                    <label for="female">no</label>
+                    <input type="radio" id="male" name="gender"/>
+                    <label for="male">ferfi</label>
+                </div>
+                <div class="small2">
+                    <legend>Milyen markakat szeretsz?</legend>
+                    <input type="checkbox" id="adidas"/>
+                    <label for="adidas">Adidas</label>
+                    <input type="checkbox" id="opel"/>
+                    <label for="opel">Opel</label><br/>
+                    <input type="checkbox" id="apple"/>
+                    <label for="apple">Apple</label>
+                    <input type="checkbox" id="rayban"/>
+                    <label for="rayban">Ray-Ban</label><br/>
+                    <input type="checkbox" id="cola"/>
+                    <label for="cola">Coca-Cola</label>
+                    <input type="checkbox" id="starbucks"/>
+                    <label for="starbucks">Starbucks</label><br/>
+                    <input type="checkbox" id="macuda"/>
+                    <label for="macuda">Mazda</label>
+                    <input type="checkbox" id="tesla"/>
+                    <label for="tesla">Tesla</label><br/>
+                    <input type="checkbox" id="nike"/>
+                    <label for="nike">Nike</label>
+                    <input type="checkbox" id="yahoo"/>
+                    <label for="yahoo">Yahoo</label><br/>
+                    <legend>Tobbet is valaszthatsz!</legend>
+                </div>
             </div>
             <div class="middle">
-                <form>
                     <fieldset>
                         <legend>Kapcsolat</legend>
                         <legend>Telefonszam *</legend>
@@ -41,9 +73,18 @@
                             <option>Szalloda</option>
                         </select>
                     </fieldset>
-                </form>
             </div>
-            <div class="bottom"></div>
+            <div class="bottom">
+                <legend>Bemutatkozas *</legend>
+                <input type="text" placeholder="Irj magadrol par mondatot!" required/>
+                <legend>CV feltoltese</legend>
+                <input type="button" value="file kivalasztasa"/><br/>
+                <input type="checkbox" id="accept"/>
+                <label for="accept">Elfogadom a felhasznalasi felteteleket</label><br/>
+                <input type="button" value="MENTES">
+                <input type="button" value="Urlap torlese">        
+            </div>
+            </form>
         </div>
     </body>
 </html>
