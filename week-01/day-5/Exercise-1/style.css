@@ -26,8 +26,9 @@
     background-color: yellow;
     box-sizing: border-box;
     border: 5px solid red;
-    display: inline-block;
-    width: 248px;
+    /*display: inline-block;*/
+    float: left;
+    width: 250px;
     height: 500px;
     position: relative;
     top: 40px;
@@ -37,18 +38,32 @@
 .bottom {
     background-color: yellow;
     box-sizing: border-box;
+    clear: both;
     border: 5px solid red;
     width: 500px;
     height: 100px;
     position: relative;
-    top: 50px;
+    top: 100px;
 }
 
-/*.small1 {
+.small1 {
     border: 1px solid black;
-    display: inline-block;
-    width: 50px;
+    box-sizing: border-box;
+    /*display: inline-block;*/
+    float: left;
+    width: 120px;
     height: 50px;
     position: relative;
-    top: 40px;
-    left: 40px;*/
+    top: 150px;
+}
+
+.small2 {
+    border: 1px solid black;
+    box-sizing: border-box;
+    /*display: inline-block;*/
+    clear: both;
+    width: 240px;
+    height: 150px;
+    position: relative;
+    top: 200px;
+}   
