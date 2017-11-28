@@ -8,7 +8,7 @@ public class Exercise5 {
         // - Create a function called `factorio`
         //   that returns it's input's factorial
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Factorial of: ? - Please give an int number");
+        System.out.println("Factorial of: ? - Please give a positive int number");
         int top = scanner.nextInt();
         System.out.println("The sum is: " + fact(top));
     }
