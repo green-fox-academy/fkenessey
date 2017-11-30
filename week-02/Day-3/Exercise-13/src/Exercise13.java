@@ -1,7 +1,5 @@
 import java.util.*;
 
-import static java.lang.Integer.parseInt;
-
 public class Exercise13 {
     public static void main(String[] args) {
         // Create a simple calculator application which reads the parameters from the prompt
@@ -33,9 +31,9 @@ public class Exercise13 {
         int endresult = 0;
         //As ArrayList does not work as planned:
         char a = p.charAt(2);
-        int an = parseInt(String.valueOf(a));
+        int an = Integer.parseInt(String.valueOf(a));
         char b = p.charAt(4);
-        int bn = parseInt(String.valueOf(b));
+        int bn = Integer.parseInt(String.valueOf(b));
         //char op = p.charAt(0);
         //System.out.println("a:" + a + "b:" + b + "op:" + op);
         //System.out.println("a:" + an + "b:" + bn);
