@@ -6,10 +6,10 @@ public class CreatePalindrom {
         // string, create a palindrome from it and then return it.
 
         String palindrom = readString();
-        System.out.println(createThePalindrom(palindrom));
+        System.out.println(createPalindrom(palindrom));
     }
 
-    private static String createThePalindrom(String inputString) {
+    private static String createPalindrom(String inputString) {
 
         //Alternative solution
         //StringBuilder gnirtStupni = new StringBuilder(inputString);

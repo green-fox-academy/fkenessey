@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import  java.util.*;
 
 public class Anagram {
@@ -8,11 +7,11 @@ public class Anagram {
 
         String a = inputString();
         String b = inputString();
-        System.out.println("Thinking that this is an Anagram is " + anaCompute(a,b));
+        System.out.println("Thinking that this is an Anagram is " + isAnagram(a,b));
     }
 
 
-    private static boolean anaCompute(String a1, String b1) {
+    private static boolean isAnagram(String a1, String b1) {
         boolean response;
         ArrayList<String> a1list = new ArrayList<>();
         ArrayList<String> b1list = new ArrayList<>();
