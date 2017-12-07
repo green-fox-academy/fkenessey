@@ -10,11 +10,11 @@ public class Exercise11 {
     int size = 350;
     graphics.setColor(Color.yellow);
     graphics.fillRect(0,0,350,350);
-    fibSquareTop(graphics, 4,0, 0, 330);
+    drawFracSquares(graphics, 4,0, 0, 330);
 
   }
 
-  private static void fibSquareTop(Graphics graphics, int level, int x, int y, int size) {
+  private static void drawFracSquares(Graphics graphics, int level, int x, int y, int size) {
     if (level == 0) {
       return;
     } else {
@@ -27,10 +27,10 @@ public class Exercise11 {
       int y1 = y + size / 3;
       int y2 = y + (size * 2 / 3);
 
-      fibSquareTop(graphics, level - 1, x1, y, size / 3 );
-      fibSquareTop(graphics, level - 1, x2, y1, size / 3 );
-      fibSquareTop(graphics, level - 1, x1, y2, size / 3 );
-      fibSquareTop(graphics, level - 1, x, y1, size / 3 );
+      drawFracSquares(graphics, level - 1, x1, y, size / 3 );
+      drawFracSquares(graphics, level - 1, x2, y1, size / 3 );
+      drawFracSquares(graphics, level - 1, x1, y2, size / 3 );
+      drawFracSquares(graphics, level - 1, x, y1, size / 3 );
     }
   }
 
