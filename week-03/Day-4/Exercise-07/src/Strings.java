@@ -6,7 +6,6 @@ public class Strings {
     String charSeqFrom  = "x";
     String charSeqTo = "y";
     System.out.println(recString(inputString, charSeqFrom, charSeqTo));
-    //System.out.println(inputString.substring(0,5) + inputString.substring(5, 6).replace('x','y') + inputString.substring(6,inputString.length()));
   }
 
   private static String recString(String inputString, String charSeqFrom, String charSeqTo) {
