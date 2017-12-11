@@ -1,7 +1,9 @@
 public class Student {
-  public learn(){
-
+  public void learn(){
+    System.out.println("Studen's go0glin @da moment...");
   }
 
-  public
+  public void question(Teacher teacher) {
+    teacher.answer();
+  }
 }
