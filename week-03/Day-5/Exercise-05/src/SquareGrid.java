@@ -6,26 +6,18 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class SquareGrid {
   public static void mainDraw(Graphics graphics){
-
-    //drawRectangle(graphics, 150,150, 150);
     drawFracRectangle(graphics, 150, 150, 150, 10, 4);
-
-
   }
 
   private static void drawFracRectangle(Graphics g, int x, int y, int size, int thickness, int level) {
-
     if (level == 0) {
       return;
     } else {
-
       drawRectangle(g, x, y, size, thickness);
-
       int x1 = x - size / 2;
       int x2 = x + size / 2;
       int y1 = y - size / 2;
       int y2 = y + size / 2;
-
       drawFracRectangle(g, x1, y1, size / 2, thickness /2, level - 1);
       drawFracRectangle(g, x1, y2, size / 2, thickness /2,level - 1);
       drawFracRectangle(g, x2, y1, size / 2, thickness /2,level - 1);
@@ -60,8 +52,6 @@ public class SquareGrid {
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
       mainDraw(graphics);
-
     }
   }
-
 }
