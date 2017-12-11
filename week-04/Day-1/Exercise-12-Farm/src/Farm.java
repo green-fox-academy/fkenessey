@@ -6,9 +6,8 @@ public class Farm {
 
   public Farm() {
     Animal[] listOfAnimals = new Animal[5];
-    for (int i = 0; i < 5; i++) {
-      Animal animal1 = new Animal();
-      listOfAnimals[i] = animal1;
+    for (int i = 0; i < listOfAnimals.length; i++) {
+      listOfAnimals[i] = new Animal();
     }
   }
 
