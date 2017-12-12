@@ -2,12 +2,14 @@ public class Pirate {
   int alcoholLevel;
   int howsItGoing;
   boolean alive;
+  boolean passedOut;
   boolean parrot;
 
   public Pirate() {
     this.alcoholLevel = 10;
     this.howsItGoing = 0;
     this.alive = true;
+    this.passedOut = false;
     this.parrot = false;
   }
 
@@ -48,7 +50,8 @@ public class Pirate {
       pirate2.die();
       pirate1.parrot = true;
     } else if (pirate1.alive && pirate2.alive) {
-      System.out.println("Both pirates passed out!");
+      pirate1.passedOut = true;
+      pirate2.passedOut = true;
     } else {
       System.out.println("Cannot fight a dead pirate!");
     }
