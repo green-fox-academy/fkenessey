@@ -20,6 +20,6 @@ public class Mentor extends Person {
   }
 
   public void introduce() {
-    System.out.println("Hi, I'm " + getName() + ", a " + getAge()+ " year old " + getGender() + level + " mentor.");
+    System.out.println("Hi, I'm " + getName() + ", a " + getAge()+ " year old " + getGender() + " " + level + " mentor.");
   }
 }
