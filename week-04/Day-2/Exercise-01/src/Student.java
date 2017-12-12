@@ -3,17 +3,17 @@ public class Student extends Person {
   private int skippedDays;
 
   public Student() {
-    setName("Jane Doe");
-    setAge(30);
-    setGender("female");
+    this.setName("Jane Doe");
+    this.setAge(30);
+    this.setGender("female");
     this.previousOrganization = "The School of Life";
     this.skippedDays = 0;
   }
 
   public Student (String name, int age, String gender, String previousOrganization) {
-    setName(name);
-    setAge(age);
-    setGender(gender);
+    this.setName(name);
+    this.setAge(age);
+    this.setGender(gender);
     this.previousOrganization = previousOrganization;
   }
 

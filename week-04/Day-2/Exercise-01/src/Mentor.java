@@ -2,16 +2,16 @@ public class Mentor extends Person {
   private String level;
 
   public Mentor() {
-    setName("Jane Doe");
-    setAge(30);
-    setGender("female");
+    this.setName("Jane Doe");
+    this.setAge(30);
+    this.setGender("female");
     this.level = "intermediate";
   }
 
   public Mentor(String name, int age, String gender, String level) {
-    setName(name);
-    setAge(age);
-    setGender(gender);
+    this.setName(name);
+    this.setAge(age);
+    this.setGender(gender);
     this.level = level;
   }
 
