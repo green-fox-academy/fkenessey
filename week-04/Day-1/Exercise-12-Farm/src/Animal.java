@@ -34,7 +34,7 @@ public class Animal {
 
   @Override
   public String toString() {
-    return "hunger value: " + hunger + "\n" + "thirst value: " + thirst;
+    return "hunger value: " + hunger + " " + "thirst value: " + thirst;
   }
 
   /*public static void main(String[] args) {
