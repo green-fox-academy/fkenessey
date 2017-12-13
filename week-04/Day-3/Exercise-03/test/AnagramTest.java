@@ -10,5 +10,4 @@ public class AnagramTest {
     String input2 = "fairy tales";
     assertTrue(anagramTest.ifAnagram(input1,input2));
   }
-
 }
