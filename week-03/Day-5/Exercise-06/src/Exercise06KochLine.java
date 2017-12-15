@@ -6,20 +6,17 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Exercise06KochLine {
   public static void mainDraw(Graphics graphics){
-    drawKochLine(graphics, 50, 150, 200, 150, 1);
-
-
+    drawKochLine(graphics, 50, 150, 250, 200, 2);
   }
 
   private static void drawKochLine(Graphics g, int x1, int y1, int x2, int y2, int level) {
     if (level == 0) {
       g.drawLine(x1, y1, x2, y2);
     } else {
-      int length = (int)(Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2)));
       int xMid1 = x1 + ((x2 - x1) / 3);
       int yMid1 = y1 + ((y2 - y1) / 3);
-      int xMid2 = (int)(0.5 * (x2-x1) + Math.sqrt(3) * (y2-y1)/6);
-      int yMid2 = (int)(0.5 * (y2-y1) + Math.sqrt(3) * (x2-x1)/6);
+      int xMid2 = (int)(0.5 * (x1 + x2) + Math.sqrt(3) * (y2-y1)/6);
+      int yMid2 = (int)(0.5 * (y1 + y2) + Math.sqrt(3) * (x1-x2)/6);
       int xMid3 = x1 + ((x2 - x1) * 2 / 3);
       int yMid3 = y1 + ((y2 - y1) * 2 / 3);
       drawKochLine(g, x1, y1, xMid1, yMid1, level - 1);
