@@ -22,7 +22,7 @@ public class FavouriteAnimals {
     } catch (Exception e) {
 
       content = readFile(filePath);
-      
+
       System.out.print("```java FavouriteAnimals");
       for (String line : content) {
         System.out.print(" [" + line + "]");
