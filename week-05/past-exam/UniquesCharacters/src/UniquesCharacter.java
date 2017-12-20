@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,16 +17,14 @@ public class UniquesCharacter {
   public static List<String> uniqueCharacters(String inputString) {
 
     List<String> outputCharacters = new ArrayList<>();
+    ArrayList<Character> characterRegister = new ArrayList<>();
 
     for (int i = 0; i < inputString.length(); i++) {
-      outputCharacters.add(String.valueOf(inputString.charAt(i)));
-    }
-
-    Collections.sort(outputCharacters);
-
-    for (int i = 0; i < outputCharacters.size()-1; i++) {
-      if (outputCharacters.get(i).equalsIgnoreCase(outputCharacters.get(i + 1))) {
-        outputCharacters.removeIf(outputCharacters.get(i)::equals);
+      if ((inputString.lastIndexOf(inputString.charAt(i)) != i) || (characterRegister.contains(inputString.charAt(i)))) {
+        characterRegister.add(inputString.charAt(i));
+        continue;
+      } else {
+         outputCharacters.add(String.valueOf(inputString.charAt(i)));
       }
     }
 
