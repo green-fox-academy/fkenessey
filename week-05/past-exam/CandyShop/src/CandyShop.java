@@ -5,8 +5,8 @@ public class CandyShop {
   private int candyInStore;
   private int lollipopInStore;
   private double raisePercent;
-  static Candy CANDY = new Candy();
-  static Lollipop LOLLIPOP = new Lollipop();
+  static final Candy CANDY = new Candy();
+  static final Lollipop LOLLIPOP = new Lollipop();
 
   public CandyShop(int sugarToGet) {
     this.sugarInStore = sugarToGet;
