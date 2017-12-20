@@ -1,6 +1,4 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class UniquesCharacter {
@@ -11,7 +9,6 @@ public class UniquesCharacter {
     List<String> result = uniqueCharacters(inputString);
 
     System.out.println(result);
-
   }
 
   public static List<String> uniqueCharacters(String inputString) {
@@ -27,8 +24,6 @@ public class UniquesCharacter {
          outputCharacters.add(String.valueOf(inputString.charAt(i)));
       }
     }
-
     return outputCharacters;
-
   }
 }
