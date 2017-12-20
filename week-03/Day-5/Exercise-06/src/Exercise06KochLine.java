@@ -6,7 +6,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class Exercise06KochLine {
   public static void mainDraw(Graphics graphics){
-    drawKochLine(graphics, 50, 150, 250, 200, 2);
+    drawKochLine(graphics, 50, 150, 250, 200, 5);
   }
 
   private static void drawKochLine(Graphics g, int x1, int y1, int x2, int y2, int level) {

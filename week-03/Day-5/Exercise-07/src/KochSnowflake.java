@@ -5,9 +5,9 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class KochSnowflake {
   public static void mainDraw(Graphics graphics){
-    drawKochLine(graphics, 50, 100, 250, 100, 3);
-    drawKochLine(graphics, 250, 100, 150, 100 + ((int)(Math.sqrt(3) * 200) / 2), 3);
-    drawKochLine(graphics, 150, 100 + ((int)(Math.sqrt(3) * 200) / 2), 50, 100, 3);
+    drawKochLine(graphics, 50, 100, 250, 100, 2);
+    drawKochLine(graphics, 250, 100, 150, 100 + ((int)(Math.sqrt(3) * 200) / 2), 2);
+    drawKochLine(graphics, 150, 100 + ((int)(Math.sqrt(3) * 200) / 2), 50, 100, 2);
 
   }
 
@@ -42,7 +42,7 @@ public class KochSnowflake {
       ypoints[i] = (int)yps[i];
     }
 
-    g.drawPolygon(xpoints,ypoints,3);
+    g.drawPolygon(xpoints,ypoints,0);
     //g.setColor(Color.white);
     //g.fillPolygon(xpoints,ypoints,3);
   }
