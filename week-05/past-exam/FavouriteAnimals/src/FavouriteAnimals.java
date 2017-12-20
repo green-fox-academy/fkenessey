@@ -20,7 +20,14 @@ public class FavouriteAnimals {
         writeFile(content, filePath);
       }
     } catch (Exception e) {
-      System.out.println("```java FavouriteAnimals " + readFile(filePath) + "```");
+
+      content = readFile(filePath);
+      
+      System.out.print("```java FavouriteAnimals");
+      for (String line : content) {
+        System.out.print(" [" + line + "]");
+      }
+      System.out.print("```");
     }
   }
 
