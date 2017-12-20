@@ -1,10 +1,10 @@
 public class CandyShop {
 
   private int sugarInStore;
-  private int moneyInStore;
+  private double moneyInStore;
   private int candyInStore;
   private int lollipopInStore;
-  private int raisePercent;
+  private double raisePercent;
   static Candy CANDY = new Candy();
   static Lollipop LOLLIPOP = new Lollipop();
 
@@ -24,7 +24,7 @@ public class CandyShop {
     this.sugarInStore = sugarInStore;
   }
 
-  public int getMoneyInStore() {
+  public double getMoneyInStore() {
     return moneyInStore;
   }
 
@@ -48,7 +48,7 @@ public class CandyShop {
     this.lollipopInStore = lollipopInStore;
   }
 
-  public int getRaisePercent() {
+  public double getRaisePercent() {
     return raisePercent;
   }
 
@@ -73,15 +73,24 @@ public class CandyShop {
   public void sell(Sweets type, int amount) {
     if (type instanceof Candy) {
       Candy candy = new Candy();
-      moneyInStore += candy.getPriceInDollar();
+      moneyInStore += ((candy.getPriceInDollar()) * (1 + (raisePercent / 100)));
       candyInStore--;
     } else if (type instanceof Lollipop) {
       Lollipop lolly = new Lollipop();
-      moneyInStore += lolly.getPriceInDollar();
+      moneyInStore += (lolly.getPriceInDollar()) * (1 + (raisePercent / 100));
       lollipopInStore--;
     }else {
       System.out.println("Sorry, but that is not available in the Candy Shop");
     }
+  }
+
+  public void raise(int percent) {
+    raisePercent += percent;
+  }
+
+  public void buySugar(int sugarBought) {
+    sugarInStore += sugarBought;
+    moneyInStore -= (sugarBought / 100) * 10;
   }
 
   @Override

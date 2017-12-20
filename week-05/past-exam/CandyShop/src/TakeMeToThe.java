@@ -35,9 +35,9 @@ public class TakeMeToThe {
     System.out.println(candyShop);
     // Should print out:
     // "Invetory: 1 candies, 1 lollipops, Income: 30.5$, Sugar: 270gr"
-    /*candyShop.buySugar(300);
+    candyShop.buySugar(300);
     System.out.println(candyShop);
     // Should print out:
-    // "Invetory: 1 candies, 1 lollipops, Income: 5$, Sugar: 570gr"*/
+    // "Invetory: 1 candies, 1 lollipops, Income: 5$, Sugar: 570gr"
   }
 }

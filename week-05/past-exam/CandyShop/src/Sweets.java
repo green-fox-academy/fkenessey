@@ -1,6 +1,6 @@
 public class Sweets {
   private int sugarNeededGr;
-  private int priceInDollar;
+  private double priceInDollar;
 
   public Sweets() {
   }
@@ -14,7 +14,7 @@ public class Sweets {
     return sugarNeededGr;
   }
 
-  public int getPriceInDollar() {
+  public double getPriceInDollar() {
     return priceInDollar;
   }
 
@@ -22,7 +22,7 @@ public class Sweets {
     this.sugarNeededGr = sugarNeededGr;
   }
 
-  public void setPriceInDollar(int priceInDollar) {
+  public void setPriceInDollar(double priceInDollar) {
     this.priceInDollar = priceInDollar;
   }
 }
