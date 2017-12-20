@@ -70,15 +70,19 @@ public class CandyShop {
     }
   }
 
-  /*public static Sweets CANDY() {
-    Candy candy = new Candy();
-    return candy;
+  public void sell(Sweets type, int amount) {
+    if (type instanceof Candy) {
+      Candy candy = new Candy();
+      moneyInStore += candy.getPriceInDollar();
+      candyInStore--;
+    } else if (type instanceof Lollipop) {
+      Lollipop lolly = new Lollipop();
+      moneyInStore += lolly.getPriceInDollar();
+      lollipopInStore--;
+    }else {
+      System.out.println("Sorry, but that is not available in the Candy Shop");
+    }
   }
-
-  public static  Sweets LOLLIPOP() {
-    Lollipop lollipop = new Lollipop();
-    return lollipop;
-  }*/
 
   @Override
   public String toString() {
