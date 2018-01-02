@@ -14,6 +14,8 @@ public class FleetOfThings {
     Thing thing2 = new Thing("Remove the obstacles");
     Thing thing3 = new Thing("Stand up");
     Thing thing4 = new Thing("Eat lunch");
+    Thing thing5 = new Thing("Aaaaa");
+    Thing thing6 = new Thing("Bbbbbbb");
 
     thing3.complete();
     thing4.complete();
@@ -22,6 +24,8 @@ public class FleetOfThings {
     fleet.add(thing2);
     fleet.add(thing3);
     fleet.add(thing4);
+    fleet.add(thing5);
+    fleet.add(thing6);
 
     fleet.sort();
 

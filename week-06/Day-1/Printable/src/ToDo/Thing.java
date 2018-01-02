@@ -21,24 +21,20 @@ public class Thing implements Comparable, Printable{
   public int compareTo(Object o) {
     Thing thingToCompare = (Thing) o;
     int output = 0;
-    if (this.completed && thingToCompare.completed) {
-      if (this.name.charAt(0) == thingToCompare.name.charAt(0)) {
+    if (this.completed && thingToCompare.completed && (this.name.charAt(0) == thingToCompare.name.charAt(0))) {
         output = 0;
-      } else if (this.name.charAt(0) > thingToCompare.name.charAt(0)) {
+      } else if (this.completed && thingToCompare.completed && (this.name.charAt(0) > thingToCompare.name.charAt(0))) {
         output = 1;
-      } else {
+      } else if (this.completed && thingToCompare.completed && (this.name.charAt(0) < thingToCompare.name.charAt(0))){
         output = -1;
-      }
-    } else if (this.completed) {
-      output = -1;
-    } else {
-      if (this.name.charAt(0) == thingToCompare.name.charAt(0)) {
+      } else if (this.completed && !thingToCompare.completed) {
+        output = -1;
+      } else if (!this.completed && !thingToCompare.completed && (this.name.charAt(0) == thingToCompare.name.charAt(0))){
         output = 0;
-      } else if (this.name.charAt(0) > thingToCompare.name.charAt(0)) {
+      } else if (!this.completed && !thingToCompare.completed && (this.name.charAt(0) > thingToCompare.name.charAt(0))) {
         output = 1;
-      } else {
+      } else if (!this.completed && !thingToCompare.completed && (this.name.charAt(0) < thingToCompare.name.charAt(0))) {
         output = -1;
-      }
     }
     return output;
   }
