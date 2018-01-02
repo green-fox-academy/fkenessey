@@ -1,6 +1,6 @@
 package animals;
 
-public class Reptile extends Animal{
+public class Reptile extends EggLayer{
 
   public Reptile(String name) {
     super(name, 0);
@@ -8,9 +8,5 @@ public class Reptile extends Animal{
 
   public String getName(){
     return name;
-  }
-
-  public String breed(){
-    return "laying eggs.";
   }
 }
