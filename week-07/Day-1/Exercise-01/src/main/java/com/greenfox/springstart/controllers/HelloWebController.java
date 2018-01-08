@@ -18,7 +18,9 @@ public class HelloWebController {
 
   String[] colour = {"red", "blue", "yellow", "green", "grey"};
 
-  String[] size = {"5", "20", "40", "60", "80"};
+  String[] size = {"20", "40", "50", "60", "80"};
+
+  String[] ffamily = {"Arial", "Georgia", "Times New Roman", "Verdana", "Tahoma"};
 
   @RequestMapping(value = "/web/greeting")
   public String greeting(Model model) {
@@ -26,6 +28,7 @@ public class HelloWebController {
     model.addAttribute("counter", counter.getAndAdd(1));
     model.addAttribute("colour", colour[(int)(Math.random() * colour.length)]);
     model.addAttribute("fsize", size[(int)(Math.random() * size.length)]);
+    model.addAttribute("ffamily", ffamily[(int)(Math.random() * ffamily.length)]);
     return "greeting";
   }
 }

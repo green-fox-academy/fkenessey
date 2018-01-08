@@ -5,7 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<body th:style="'color:' + ${colour} + '; font-size: ' + ${fsize} + 'px'"/>
-<p th:text="${hello} + '! This site was loaded ' + ${counter} + ' times since last server start.'"/>
+<span th:style="'color:' + ${colour} + '; font-size: ' + ${fsize} + 'px' + '; font-family: ' + ${ffamily}">
+    <p th:text="${hello} + '!'"/></span>
+<span th:style="'color: black; font-size: 25; font-family: Arial'">
+    <p th:text="'This site was loaded ' + ${counter} + ' times since last server start.'"/></span>
 </body>
 </html>
