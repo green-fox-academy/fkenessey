@@ -13,6 +13,7 @@
     <td>animal family</td>
     <td>being king</td>
     <td>affiliation</td>
+    <td>affiliation</td>
     <tr th:each="accounts: ${listOfBankAccounts}">
         <td th:text="${accountsStat.count}" />
         <td th:text="${accounts.name}" />
@@ -26,6 +27,7 @@
             <span th:case="'Good One'" th:text="good" />
             <span th:case="'Bad Guy'" th:text="bad" />
         </td>
+        <td th:text="${accounts.affiliation}" />
     </tr>
 </table>
 </body>
