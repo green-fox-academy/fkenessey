@@ -12,7 +12,7 @@
     <td>balance (Zebras)</td>
     <td>animal family</td>
     <tr th:each="accounts: ${listOfBankAccounts}">
-        <td th:text="${accountsStat.index}" />
+        <td th:text="${accountsStat.count}" />
         <td th:text="${accounts.name}" />
         <td th:text="${accounts.balance}" />
         <td th:text="${accounts.animalType}" />
