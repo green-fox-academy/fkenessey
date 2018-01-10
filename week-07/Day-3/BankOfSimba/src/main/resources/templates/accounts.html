@@ -18,7 +18,7 @@
         <td th:text="${accounts.balance}" />
         <td th:text="${accounts.animalType}" />
         <td>
-            <span th:if="${accounts.king} == true" th:text="King" />
+            <span th:if="${accounts.king} == true" th:style="'color: red; font-size: 20px; font-family: Verdana'" th:text="King" />
             <span th:unless="${accounts.king} == true" th:text="'Not a king'" />
         </td>
     </tr>
