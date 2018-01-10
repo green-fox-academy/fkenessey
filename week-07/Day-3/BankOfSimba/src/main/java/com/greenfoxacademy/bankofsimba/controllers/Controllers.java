@@ -3,8 +3,12 @@ package com.greenfoxacademy.bankofsimba.controllers;
 import com.greenfoxacademy.bankofsimba.models.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 @Controller
@@ -29,6 +33,20 @@ public class Controllers {
     model.addAttribute("test2", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
 
     return "template";
+  }
+
+  @RequestMapping(value = "/accounts")
+  public String accounts(Model model) {
+
+    List<BankAccount> listOfBankAccounts = new ArrayList<>();
+    listOfBankAccounts.add(new BankAccount("Simba", 5000, "lion"));
+    listOfBankAccounts.add(new BankAccount("Nala", 100, "lion"));
+    listOfBankAccounts.add(new BankAccount("Timon", 1500, "meerkat"));
+    listOfBankAccounts.add(new BankAccount("Pumbaa", 2500, "warthog"));
+
+    model.addAttribute("listOfBankAccounts",listOfBankAccounts);
+
+    return "accounts";
   }
 
   public Model showInserter(Model model, BankAccount bankAccount){
