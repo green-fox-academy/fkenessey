@@ -3,7 +3,10 @@ package com.greenfoxacademy.bankofsimba.controllers;
 import com.greenfoxacademy.bankofsimba.models.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +14,8 @@ import java.util.List;
 
 @Controller
 public class Controllers {
+
+  static List<BankAccount> listOfBankAccounts = new ArrayList<>();
 
   @RequestMapping(value = "/show")
   public String show(Model model) {
@@ -36,7 +41,6 @@ public class Controllers {
   @RequestMapping(value = "/accounts")
   public String accounts(Model model) {
 
-    List<BankAccount> listOfBankAccounts = new ArrayList<>();
     listOfBankAccounts.add(new BankAccount("Simba", 5000, "lion", true, "Good One"));
     listOfBankAccounts.add(new BankAccount("Nala", 100, "lion", false, "Good One"));
     listOfBankAccounts.add(new BankAccount("Timon", 1500, "meerkat", false, "Good One"));
@@ -45,6 +49,19 @@ public class Controllers {
 
     model.addAttribute("listOfBankAccounts",listOfBankAccounts);
 
+    return "accounts";
+  }
+
+  @RequestMapping(value = "/accounts/raise", method = RequestMethod.POST)
+  public String raise(@ModelAttribute BankAccount bankAccount, BindingResult errors, Model model) {
+    for (BankAccount bankAccountI : listOfBankAccounts) {
+      if (bankAccountI.isKing()) {
+        bankAccountI.setBalance(bankAccountI.getBalance() + 100);
+      } else {
+        bankAccountI.setBalance(bankAccountI.getBalance() + 10);
+      }
+    }
+    model.addAttribute("listOfBankAccounts",listOfBankAccounts);
     return "accounts";
   }
 

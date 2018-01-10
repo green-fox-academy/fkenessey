@@ -30,5 +30,8 @@
         <td th:text="${accounts.affiliation}" />
     </tr>
 </table>
+<form class="button" th:action="@{/accounts/raise}" method="post">
+    <input type="submit" value="Raise"/>
+</form>
 </body>
 </html>
