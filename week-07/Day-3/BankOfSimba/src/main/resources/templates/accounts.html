@@ -6,9 +6,15 @@
     <meta charset="utf-8" />
 </head>
 <body>
-<ul th:each="account: ${listOfBankAccounts}">
-    <li th:text="'Account holder; ' + ${account.name} + ', available balance: ' + ${account.balance}
-    + ', family: ' + ${account.animalType}" />
-</ul>
+<table border="1">
+    <td>name</td>
+    <td>balance (Zebras)</td>
+    <td>animal family</td>
+    <tr th:each="accounts: ${listOfBankAccounts}">
+        <td th:text="${accounts.name}" />
+        <td th:text="${accounts.balance}" />
+        <td th:text="${accounts.animalType}" />
+    </tr>
+</table>
 </body>
 </html>
