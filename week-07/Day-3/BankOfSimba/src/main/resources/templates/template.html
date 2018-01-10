@@ -9,5 +9,8 @@
     <p th:text="'name: ' + ${name}"/>
     <p th:text="' balance: ' + ${#numbers.formatDecimal(balance,2,2,'POINT')} + ' Zebra'"/>
     <p th:text="' family: ' + ${animalType}"/>
+
+    <p th:utext="${test1}"/>
+    <p th:text="${test2}"/>
 </body>
 </html>
