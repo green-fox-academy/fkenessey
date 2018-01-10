@@ -7,7 +7,7 @@
 </head>
 <body>
     <p th:text="'name: ' + ${name}"/>
-    <p th:text="' balance: ' + ${balance}"/>
+    <p th:text="' balance: ' + ${#numbers.formatDecimal(balance,2,2,'POINT')} + ' Zebra'"/>
     <p th:text="' family: ' + ${animalType}"/>
 </body>
 </html>
