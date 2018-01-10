@@ -12,6 +12,7 @@
     <td>balance (Zebras)</td>
     <td>animal family</td>
     <td>being king</td>
+    <td>affiliation</td>
     <tr th:each="accounts: ${listOfBankAccounts}">
         <td th:text="${accountsStat.count}" />
         <td th:text="${accounts.name}" />
@@ -20,6 +21,10 @@
         <td>
             <span th:if="${accounts.king} == true" th:style="'color: red; font-size: 20px; font-family: Verdana'" th:text="King" />
             <span th:unless="${accounts.king} == true" th:text="'Not a king'" />
+        </td>
+        <td th:switch="${accounts.affiliation}">
+            <span th:case="'Good One'" th:text="good" />
+            <span th:case="'Bad Guy'" th:text="bad" />
         </td>
     </tr>
 </table>

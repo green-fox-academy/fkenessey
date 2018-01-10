@@ -15,7 +15,7 @@ public class Controllers {
   @RequestMapping(value = "/show")
   public String show(Model model) {
 
-    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", true);
+    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", true, "Good One");
     model.equals(showInserter(model, bankAccount));
 
     return "template";
@@ -24,7 +24,7 @@ public class Controllers {
   @RequestMapping(value = "/texttester")
   public String texttester(Model model) {
 
-    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", true);
+    BankAccount bankAccount = new BankAccount("Simba", 2000, "lion", true, "Good One");
     model.equals(showInserter(model, bankAccount));
 
     model.addAttribute("test1", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
@@ -37,10 +37,11 @@ public class Controllers {
   public String accounts(Model model) {
 
     List<BankAccount> listOfBankAccounts = new ArrayList<>();
-    listOfBankAccounts.add(new BankAccount("Simba", 5000, "lion", true));
-    listOfBankAccounts.add(new BankAccount("Nala", 100, "lion", false));
-    listOfBankAccounts.add(new BankAccount("Timon", 1500, "meerkat", false));
-    listOfBankAccounts.add(new BankAccount("Pumbaa", 2500, "warthog", false));
+    listOfBankAccounts.add(new BankAccount("Simba", 5000, "lion", true, "Good One"));
+    listOfBankAccounts.add(new BankAccount("Nala", 100, "lion", false, "Good One"));
+    listOfBankAccounts.add(new BankAccount("Timon", 1500, "meerkat", false, "Good One"));
+    listOfBankAccounts.add(new BankAccount("Pumbaa", 2500, "warthog", false, "Good One"));
+    listOfBankAccounts.add(new BankAccount("Scar", 4500, "lion", false, "Bad Guy"));
 
     model.addAttribute("listOfBankAccounts",listOfBankAccounts);
 
@@ -52,6 +53,7 @@ public class Controllers {
     model.addAttribute("balance", bankAccount.getBalance());
     model.addAttribute("animalType", bankAccount.getAnimalType());
     model.addAttribute("being king", bankAccount.isKing());
+    model.addAttribute("affiliation", bankAccount.getAffiliation());
 
     return model;
   }
