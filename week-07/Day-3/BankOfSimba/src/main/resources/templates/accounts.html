@@ -33,5 +33,32 @@
 <form class="button" th:action="@{/accounts/raise}" method="post">
     <input type="submit" value="Raise"/>
 </form>
+<form action="#" th:action="@{/addAnimal}" th:object="${bankAccount}" method="post">
+    <table border="1">
+        <tr>
+            <td><label>name:</label></td>
+            <td><input type="text" th:field="*{name}" /></td>
+        </tr>
+        <tr>
+            <td><label>balance:</label></td>
+            <td><input type="number" th:field="*{balance}" /></td>
+        </tr>
+        <tr>
+            <td><label>animalType:</label></td>
+            <td><input type="text" th:field="*{animalType}" /></td>
+        </tr>
+        <tr>
+            <td><label>king:</label></td>
+            <td><input type="text" th:field="*{king}" /></td>
+        </tr>
+        <tr>
+            <td><label>affiliation:</label></td>
+            <td><input type="text" th:field="*{affiliation}" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

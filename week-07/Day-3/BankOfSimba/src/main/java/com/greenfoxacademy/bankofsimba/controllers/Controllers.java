@@ -65,6 +65,17 @@ public class Controllers {
     return "accounts";
   }
 
+  @RequestMapping(value = "/accounts/addAnimal", method = RequestMethod.POST)
+  public String addAnimal(@ModelAttribute BankAccount bankAccount, BindingResult errors, Model model) {
+    if (errors.hasErrors()) {
+      return "accounts";
+    } else {
+      listOfBankAccounts.add(bankAccount);
+      model.addAttribute("listOfBankAccounts", listOfBankAccounts);
+      return "accounts";
+    }
+  }
+
   public Model showInserter(Model model, BankAccount bankAccount){
     model.addAttribute("name", bankAccount.getName());
     model.addAttribute("balance", bankAccount.getBalance());
