@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HellobeanworldApplication implements CommandLineRunner{
 	@Autowired
 	Printer p;
+    @Autowired
+	MyColor colour;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HellobeanworldApplication.class, args);
@@ -16,6 +18,6 @@ public class HellobeanworldApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		p.log("hello");
+		p.log(colour.printColor());
 	}
 }
