@@ -4,6 +4,7 @@ import com.greenfoxacademy.bankofsimba.models.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +39,7 @@ public class Controllers {
     return "template";
   }
 
-  @RequestMapping(value = "/accounts")
+  @GetMapping("/accounts")
   public String accounts(Model model) {
 
     listOfBankAccounts.add(new BankAccount("Simba", 5000, "lion", true, "Good One"));
@@ -48,6 +49,7 @@ public class Controllers {
     listOfBankAccounts.add(new BankAccount("Scar", 4500, "lion", false, "Bad Guy"));
 
     model.addAttribute("listOfBankAccounts",listOfBankAccounts);
+    model.addAttribute("bankAccount", new BankAccount());
 
     return "accounts";
   }
@@ -65,7 +67,7 @@ public class Controllers {
     return "accounts";
   }
 
-  @RequestMapping(value = "/accounts/addAnimal", method = RequestMethod.POST)
+  @RequestMapping(value = "/addAnimal", method = RequestMethod.POST)
   public String addAnimal(@ModelAttribute BankAccount bankAccount, BindingResult errors, Model model) {
     if (errors.hasErrors()) {
       return "accounts";
