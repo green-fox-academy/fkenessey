@@ -14,7 +14,7 @@
 </form>
 
 <form action="#" th:action="@{/useful/email}" method="post">
-    <p>-*-*-*-*-</p>
+    <p>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-</p>
     <input type="text" name="inputLink" />
     <td>
         <span th:if="${valid}" th:style="'color: green;'" th:text="${inputLink}" />
@@ -22,6 +22,28 @@
     </td>
     <p><input type="submit" value="Submit" /></p>
 </form>
+
+<form action="#" th:action="@{/useful/encoding }" method="post">
+    <p>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-</p>
+    <p>Caesar encoder</p>
+    <td>
+        <input type="text" name="ctexte" />
+        <input type="text" name="cnume" />
+    </td>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+
+<form action="#" th:action="@{/useful/decoding }" method="post">
+    <p>Caesar decoder</p>
+    <td>
+        <input type="text" name="ctextd" />
+        <input type="text" name="cnumd" />
+    </td>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+<p>Ceasar-coding result:</p>
+<p th:text="${caesarCoded}" ></p>
+<p>-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-</p>
 
 </body>
 </html>
