@@ -27,6 +27,12 @@
             <span th:case="'Good One'" th:text="good" />
             <span th:case="'Bad Guy'" th:text="bad" />
         </td>
+        <td>
+            <form class="button" th:action="@{/accounts/raise" th:field="${accounts.balance}" method="post">
+                <input type="submit" value="Raise"/>
+            </form>
+        </td>
+
         <td th:text="${accounts.affiliation}" />
     </tr>
 </table>

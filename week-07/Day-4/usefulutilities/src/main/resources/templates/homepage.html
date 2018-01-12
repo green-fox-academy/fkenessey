@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
+</head>
+<body th:style="'background-color: ' + ${colour} + '; '">
+
+<h1>Hello World!</h1>
+
+<form class="button" th:action="@{/useful/colored}" method="post">
+    <input type="submit" value="Colored Background"/>
+</form>
+
+<form action="#" th:action="@{/useful/email}" method="post">
+    <p>-*-*-*-*-</p>
+    <input type="text" name="inputLink" />
+    <td>
+        <span th:if="${valid}" th:style="'color: green;'" th:text="${inputLink}" />
+        <span th:unless="${valid}" th:style="'color: red;'" th:text="${inputLink}" />
+    </td>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+
+</body>
+</html>
