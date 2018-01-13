@@ -21,7 +21,7 @@ public class WebController {
   @GetMapping(value = "/useful")
   public String home(Model model){
     model.addAttribute("colour", u.getbColour());
-    model.addAttribute("inputLink",  u.getEmailAddress());
+    model.addAttribute("inputLink", u.getEmailAddress());
     model.addAttribute("valid", u.isValidEmail());
     model.addAttribute("ctext", u.getCeasarText());
     model.addAttribute("cnum", u.getCeasarNum());
@@ -32,6 +32,7 @@ public class WebController {
   @RequestMapping(value = "/useful/colored", method = RequestMethod.POST)
   public ModelAndView colored(Model model){
     u.bColourRandomizer();
+    model.addAttribute("colour", u.getbColour());
     return new ModelAndView("redirect:/useful");
   }
 
