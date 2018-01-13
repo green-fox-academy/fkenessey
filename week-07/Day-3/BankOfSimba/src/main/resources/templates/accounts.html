@@ -27,11 +27,11 @@
             <span th:case="'Good One'" th:text="good" />
             <span th:case="'Bad Guy'" th:text="bad" />
         </td>
-        <td>
-            <form class="button" th:action="@{/accounts/raise" th:field="${accounts.balance}" method="post">
+        <!--<td>
+            <form class="button" th:action="@{/accounts/raiseone}" th:field="${accounts.get(accountsStat.index)}" method="post">
                 <input type="submit" value="Raise"/>
             </form>
-        </td>
+        </td>-->
 
         <td th:text="${accounts.affiliation}" />
     </tr>
@@ -39,6 +39,14 @@
 <form class="button" th:action="@{/accounts/raise}" method="post">
     <input type="submit" value="Raise"/>
 </form>
+
+<form th:action="@{/accounts/raiseone}" th:object="${listOfBankAccounts}" method="post">
+    <select id="optionsList" name="optionsListId" th:field="*{accounts}">
+        <option th:each="accounts : ${listOfBankAccounts}" th:value="${accounts.name}"
+                th:text="${accounts.name}" th:selected="${selectedOptionsList.contains(option.getOption())}">Options</option>
+    </select>
+</form>
+
 <form action="#" th:action="@{/addAnimal}" th:object="${bankAccount}" method="post">
     <table border="1">
         <tr>

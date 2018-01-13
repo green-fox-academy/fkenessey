@@ -56,13 +56,27 @@ public class Controllers {
 
   @RequestMapping(value = "/accounts/raise", method = RequestMethod.POST)
   public String raise(@ModelAttribute BankAccount bankAccount, BindingResult errors, Model model) {
-    /*for (BankAccount bankAccountI : listOfBankAccounts) {
+    for (BankAccount bankAccountI : listOfBankAccounts) {
       if (bankAccountI.isKing()) {
         bankAccountI.setBalance(bankAccountI.getBalance() + 100);
       } else {
         bankAccountI.setBalance(bankAccountI.getBalance() + 10);
       }
-    }*/
+    }
+    bankAccount.setBalance(10);
+    model.addAttribute("listOfBankAccounts",listOfBankAccounts);
+    return "accounts";
+  }
+
+  @RequestMapping(value = "/accounts/raiseone", method = RequestMethod.POST)
+  public String raiseOne(@ModelAttribute BankAccount bankAccount, BindingResult errors, Model model) {
+    for (BankAccount bankAccountI : listOfBankAccounts) {
+      if (bankAccountI.isKing()) {
+        bankAccountI.setBalance(bankAccountI.getBalance() + 100);
+      } else {
+        bankAccountI.setBalance(bankAccountI.getBalance() + 10);
+      }
+    }
     bankAccount.setBalance(10);
     model.addAttribute("listOfBankAccounts",listOfBankAccounts);
     return "accounts";
