@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listing ToDos</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<h1>Todos for today:</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>URGENT</th>
+        <th>DONE</th>
+    </tr>
+    <td>
+        <tr th:each="todo: ${repoList}">
+        <td th:text="${todo.id}" />
+        <td th:text="${todo.title}" />
+        <td>
+            <span th:if="${todo.isUrgent()}" th:text="True" />
+            <span th:unless="${todo.isUrgent()}" th:text="False" />
+        </td>
+        <td>
+            <span th:if="${todo.isDone()}" th:text="True" />
+            <span th:unless="${todo.isDone()}" th:text="False" />
+        </td>
+        </tr>
+    </td>
+</table>
+</body>
+</html>
