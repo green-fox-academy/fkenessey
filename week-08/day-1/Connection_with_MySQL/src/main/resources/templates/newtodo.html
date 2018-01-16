@@ -19,11 +19,16 @@
         <tr th:each="todo: ${repoList}">
         <td th:text="${todo.id}" />
         <td th:text="${todo.title}" />
-        <td th:text="${todo.isUrgent()}" />
-        <td th:text="${todo.isDone()}" />
+        <td th:text="${todo.isUrgent}" />
+        <td th:text="${todo.isDone}" />
         <td>
             <form action="#" th:action="@{/todo/} + ${todo.id} + '/delete'" method="post">
                 <input value="Delete" type="submit"/>
+            </form>
+        </td>
+        <td>
+            <form action="#" th:action="@{/todo/} + ${todo.id} + '/edit'" method="get">
+                <input value="Edit" type="submit"/>
             </form>
         </td>
         </tr>
