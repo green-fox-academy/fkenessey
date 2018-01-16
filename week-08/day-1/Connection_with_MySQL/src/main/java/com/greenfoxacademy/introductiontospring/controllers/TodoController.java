@@ -46,4 +46,10 @@ public class TodoController {
     repo.save(todo);
     return new ModelAndView("redirect:/todo/");
   }
+
+  @PostMapping("/{id}/delete")
+  public ModelAndView delete(Model model, @PathVariable("id") int id){
+    repo.delete(id);
+    return new ModelAndView("redirect:/todo/");
+  }
 }
