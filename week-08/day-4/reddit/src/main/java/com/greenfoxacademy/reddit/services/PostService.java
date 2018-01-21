@@ -2,7 +2,6 @@ package com.greenfoxacademy.reddit.services;
 
 import com.greenfoxacademy.reddit.models.Post;
 import com.greenfoxacademy.reddit.repositories.PostRepository;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,21 +25,8 @@ public class PostService {
     return newPost;
   }
 
-  public Post updateContentOfAPost(Post postToUpdate, String contentToSet) {
-    postToUpdate.setContent(contentToSet);
-    return postToUpdate;
-  }
-
-  public String getPostContent(Post postToGetContentOf) {
-    return postToGetContentOf.getContent();
-  }
-
   public void addPostToRepository(Post postToBeSaved) {
     postRepository.save(postToBeSaved);
-  }
-
-  public Post getPostById(Long id) {
-    return postRepository.findOne(id);
   }
 
   public void increaseScorePerClick(Long id) {
