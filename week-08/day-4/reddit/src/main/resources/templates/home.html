@@ -15,11 +15,13 @@
             <td for="score">Score</td>
             <td>Actions</td>
             <td for="content">Content</td>
+            <td for="postdate">Posted at</td>
         </tr>
         <tr th:each="post: ${posts}">
             <td id="score" th:text="${post.score}" />
             <td><a id="plus" th:href="@{/posts/actionplus/} + ${post.id}">+</a><a id="minus" th:href="@{/posts/actionminus/} + ${post.id}">-</a></td>
             <td id="content" th:text="${post.content}" />
+            <td id="postdate" th:text="${post.postCreationDate}" />
         </tr>
     </table>
 

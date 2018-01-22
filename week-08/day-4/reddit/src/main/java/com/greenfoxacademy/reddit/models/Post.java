@@ -1,6 +1,7 @@
 package com.greenfoxacademy.reddit.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "posts")
@@ -12,6 +13,8 @@ public class Post {
   private long id;
   private int score;
   private String content;
+  private int perClickScoreChangeAmount = 1;
+  private String postCreationDate = String.valueOf(LocalDate.now());
 
   public Post() {
   }
@@ -38,5 +41,21 @@ public class Post {
 
   public void setContent(String content) {
     this.content = content;
+  }
+
+  public int getPerClickScoreChangeAmount() {
+    return perClickScoreChangeAmount;
+  }
+
+  public void setPerClickScoreChangeAmount(int perClickScoreChangeAmount) {
+    this.perClickScoreChangeAmount = perClickScoreChangeAmount;
+  }
+
+  public String getPostCreationDate() {
+    return postCreationDate;
+  }
+
+  public void setPostCreationDate(String postCreationDate) {
+    this.postCreationDate = postCreationDate;
   }
 }

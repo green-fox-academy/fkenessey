@@ -30,12 +30,14 @@ public class PostService {
   }
 
   public void increaseScorePerClick(Long id) {
-    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore() + 1);
+    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore() 
+            + postRepository.findOne(id).getPerClickScoreChangeAmount());
     postRepository.save(postRepository.findOne(id));
   }
 
   public void decreaseScorePerClick(Long id) {
-    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore() - 1);
+    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore() 
+            - postRepository.findOne(id).getPerClickScoreChangeAmount());
     postRepository.save(postRepository.findOne(id));
   }
 }
