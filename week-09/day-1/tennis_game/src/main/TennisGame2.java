@@ -2,147 +2,114 @@ package main;
 
 public class TennisGame2 implements TennisGame
 {
-  public int player1Score = 0;
-  public int player2Score = 0;
+  public int player1ScoreInt = 0;
+  public int player2ScoreInt = 0;
 
   public String player1ResultString = "";
-  public String P2res = "";
-  private String player1Name;
-  private String player2Name;
+  public String player2ResultString = "";
+  private String player1NameString;
+  private String player2NameString;
 
-  public TennisGame2(String player1Name, String player2Name) {
-    this.player1Name = player1Name;
-    this.player2Name = player2Name;
+  public TennisGame2(String player1NameString, String player2NameString) {
+    this.player1NameString = player1NameString;
+    this.player2NameString = player2NameString;
   }
 
   public String getScore(){
     String scoreToReturnString = "";
-    if (player1Score == player2Score && player1Score < 4)
-    {
-      if (player1Score == 0)
+    if (player1ScoreInt == player2ScoreInt && player1ScoreInt < 4) {
+      if (player1ScoreInt == 0) {
         scoreToReturnString = "Love";
-      if (player1Score == 1)
+      } else if (player1ScoreInt == 1) {
         scoreToReturnString = "Fifteen";
-      if (player1Score == 2)
+      } else if (player1ScoreInt == 2) {
         scoreToReturnString = "Thirty";
-      if (player1Score == 3)
+      } else if (player1ScoreInt == 3) {
         scoreToReturnString = "Forty";
-      scoreToReturnString += "-All";
-    }
-    if (player1Score == player2Score && player1Score >3)
+        scoreToReturnString += "-All";
+      }
+    } else if (player1ScoreInt == player2ScoreInt && player1ScoreInt > 3) {
       scoreToReturnString = "Deuce";
-
-    if (player1Score > 0 && player2Score == 0)
-    {
-      if (player1Score ==1)
-        player1ResultString = "Fifteen";
-      if (player1Score ==2)
+    } else if (player1ScoreInt > 0 && player2ScoreInt == 0) {
+      if (player1ScoreInt == 1) {
+        scoreToReturnString = "Fifteen";
+      } else if (player1ScoreInt == 2) {
+        scoreToReturnString = "Thirty";
+      } else if (player1ScoreInt == 3) {
+        scoreToReturnString = "Forty";
+      }
+      scoreToReturnString = "- Love";
+    } else if (player2ScoreInt > 0 && player1ScoreInt ==0) {
+      if (player2ScoreInt == 1) {
+        scoreToReturnString = "Fifteen";
+      } else if (player2ScoreInt == 2) {
+        scoreToReturnString = "Thirty";
+      } else if (player2ScoreInt == 3) {
+        scoreToReturnString = "Forty";
+      }
+      scoreToReturnString = "Love -" + scoreToReturnString;
+    } else if (player1ScoreInt > player2ScoreInt && player1ScoreInt < 4) {
+      if (player1ScoreInt == 2) {
         player1ResultString = "Thirty";
-      if (player1Score ==3)
+      } else if (player1ScoreInt == 3) {
         player1ResultString = "Forty";
-
-      P2res = "Love";
-      scoreToReturnString = player1ResultString + "-" + P2res;
-    }
-    if (player2Score > 0 && player1Score ==0)
-    {
-      if (player2Score ==1)
-        P2res = "Fifteen";
-      if (player2Score ==2)
-        P2res = "Thirty";
-      if (player2Score ==3)
-        P2res = "Forty";
-
-      player1ResultString = "Love";
-      scoreToReturnString = player1ResultString + "-" + P2res;
-    }
-
-    if (player1Score > player2Score && player1Score < 4)
-    {
-      if (player1Score ==2)
-        player1ResultString ="Thirty";
-      if (player1Score ==3)
-        player1ResultString ="Forty";
-      if (player2Score ==1)
-        P2res="Fifteen";
-      if (player2Score ==2)
-        P2res="Thirty";
-      scoreToReturnString = player1ResultString + "-" + P2res;
-    }
-    if (player2Score > player1Score && player2Score < 4)
-    {
-      if (player2Score ==2)
-        P2res="Thirty";
-      if (player2Score ==3)
-        P2res="Forty";
-      if (player1Score ==1)
-        player1ResultString ="Fifteen";
-      if (player1Score ==2)
-        player1ResultString ="Thirty";
-      scoreToReturnString = player1ResultString + "-" + P2res;
-    }
-
-    if (player1Score > player2Score && player2Score >= 3)
-    {
+      } else if (player2ScoreInt == 1) {
+        player2ResultString = "Fifteen";
+      } else if (player2ScoreInt == 2) {
+        player2ResultString = "Thirty";
+      }
+      scoreToReturnString = player1ResultString + "-" + player2ResultString;
+    } else if (player2ScoreInt > player1ScoreInt && player2ScoreInt < 4) {
+      if (player2ScoreInt == 2) {
+        player2ResultString = "Thirty";
+      } else if (player2ScoreInt == 3) {
+        player2ResultString = "Forty";
+      } else if (player1ScoreInt == 1) {
+        player1ResultString = "Fifteen";
+      } else if (player1ScoreInt == 2) {
+        player1ResultString = "Thirty";
+      }
+      scoreToReturnString = player1ResultString + "-" + player2ResultString;
+    } else if (player1ScoreInt > player2ScoreInt && player2ScoreInt >= 3) {
       scoreToReturnString = "Advantage player1";
-    }
-
-    if (player2Score > player1Score && player1Score >= 3)
-    {
+    } else if (player2ScoreInt > player1ScoreInt && player1ScoreInt >= 3) {
       scoreToReturnString = "Advantage player2";
-    }
-
-    if (player1Score >=4 && player2Score >=0 && (player1Score - player2Score)>=2)
-    {
+    } else if (player1ScoreInt >=4 && player2ScoreInt >=0 && (player1ScoreInt - player2ScoreInt)>=2) {
       scoreToReturnString = "Win for player1";
-    }
-    if (player2Score >=4 && player1Score >=0 && (player2Score - player1Score)>=2)
-    {
+    } else if (player2ScoreInt >=4 && player1ScoreInt >=0 && (player2ScoreInt - player1ScoreInt)>=2) {
       scoreToReturnString = "Win for player2";
     }
     return scoreToReturnString;
   }
 
-  public void SetP1Score(int number){
+  public void increasePlayer1ScoreBy(int times){
 
-    for (int i = 0; i < number; i++)
+    for (int i = 0; i < times; i++)
     {
-      P1Score();
+      increasePlayer1ScoreByOne();
     }
-
   }
 
-  public void SetP2Score(int number){
+  public void increasePlayer2ScoreBy(int times){
 
-    for (int i = 0; i < number; i++)
+    for (int i = 0; i < times; i++)
     {
-      P2Score();
+      increasePlayer2ScoreByOne();
     }
-
   }
 
-  public void P1Score(){
-    player1Score++;
+  public void increasePlayer1ScoreByOne(){
+    player1ScoreInt++;
   }
 
-  public void P2Score(){
-    player2Score++;
+  public void increasePlayer2ScoreByOne(){
+    player2ScoreInt++;
   }
 
   public void wonPoint(String player) {
     if (player == "player1")
-      P1Score();
+      increasePlayer1ScoreByOne();
     else
-      P2Score();
+      increasePlayer2ScoreByOne();
   }
-
-  public void ScoringRule1()
-  if (player1Score ==1)
-  player1ResultString = "Fifteen";
-      if (player1Score ==2)
-  player1ResultString = "Thirty";
-      if (player1Score ==3)
-  player1ResultString = "Forty";
-
-  P2res = "Love";
 }
