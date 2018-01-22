@@ -16,6 +16,7 @@ public class PostController {
 
   @GetMapping("/")
   public String listPosts(Model model) {
+    model.addAttribute("top10Posts", postService.listTop10Posts());
     model.addAttribute("posts", postService.listAllPosts());
     return "home";
   }

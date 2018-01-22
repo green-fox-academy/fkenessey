@@ -11,6 +11,23 @@
     <h1>Posts</h1>
 
     <table class="table">
+        <label>Top 10 posts</label>
+        <tr>
+            <td for="score">Score</td>
+            <td>Actions</td>
+            <td for="content">Content</td>
+            <td for="postdate">Posted at</td>
+        </tr>
+        <tr th:each="top10Post: ${top10Posts}">
+            <td id="score" th:text="${top10Post.score}" />
+            <td><a id="plus" th:href="@{/posts/actionplus/} + ${top10Post.id}">+</a><a id="minus" th:href="@{/posts/actionminus/} + ${top10Post.id}">-</a></td>
+            <td id="content" th:text="${top10Post.content}" />
+            <td id="postdate" th:text="${top10Post.postCreationDate}" />
+        </tr>
+    </table>
+
+    <table class="table">
+        <label>List of all posts</label>
         <tr>
             <td for="score">Score</td>
             <td>Actions</td>

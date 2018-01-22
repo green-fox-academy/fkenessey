@@ -20,6 +20,12 @@ public class PostService {
     return postList;
   }
 
+  public List<Post> listTop10Posts() {
+    List<Post> top10PostsList = new ArrayList<>();
+    postRepository.findTop10ByOrderByScoreDesc().forEach(top10PostsList::add);
+    return top10PostsList;
+  }
+
   public Post createEmptyPost() {
     Post newPost = new Post();
     return newPost;
@@ -30,13 +36,13 @@ public class PostService {
   }
 
   public void increaseScorePerClick(Long id) {
-    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore() 
+    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore()
             + postRepository.findOne(id).getPerClickScoreChangeAmount());
     postRepository.save(postRepository.findOne(id));
   }
 
   public void decreaseScorePerClick(Long id) {
-    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore() 
+    postRepository.findOne(id).setScore(postRepository.findOne(id).getScore()
             - postRepository.findOne(id).getPerClickScoreChangeAmount());
     postRepository.save(postRepository.findOne(id));
   }
