@@ -2,38 +2,38 @@ package main;
 
 public class TennisGame3 implements TennisGame {
 
-  private int player1Score;
-  private int player2Score;
-  private String player1Name;
-  private String player2Name;
+  private int player1ScoreInt;
+  private int player2ScoreInt;
+  private String player1NameString;
+  private String player2NameString;
 
-  public TennisGame3(String player1Name, String player2Name) {
-    this.player1Name = player1Name;
-    this.player2Name = player2Name;
+  public TennisGame3(String player1NameString, String player2NameString) {
+    this.player1NameString = player1NameString;
+    this.player2NameString = player2NameString;
   }
 
   public String getScore() {
-    String scoreToReturn;
-    if (player1Score < 4 && player2Score < 4) {
+    String scoreToReturnString;
+    if (player1ScoreInt < 4 && player2ScoreInt < 4) {
       String[] scoreOptionsArray = {"Love", "Fifteen", "Thirty", "Forty"};
-      scoreToReturn = scoreOptionsArray[player1Score];
-      return (player1Score == player2Score) ? scoreToReturn + "-All" : scoreToReturn + "-"
-              + scoreOptionsArray[player2Score];
+      scoreToReturnString = scoreOptionsArray[player1ScoreInt];
+      return (player1ScoreInt == player2ScoreInt) ? scoreToReturnString + "-All" : scoreToReturnString + "-"
+              + scoreOptionsArray[player2ScoreInt];
     } else {
-      if (player1Score == player2Score) {
+      if (player1ScoreInt == player2ScoreInt) {
         return "Deuce";
       }
-      scoreToReturn = player1Score > player2Score ? player1Name : player2Name;
-      return ((player1Score - player2Score)*(player1Score - player2Score) == 1) ? "Advantage " + scoreToReturn
-              : "Win for " + scoreToReturn;
+      scoreToReturnString = player1ScoreInt > player2ScoreInt ? player1NameString : player2NameString;
+      return ((player1ScoreInt - player2ScoreInt)*(player1ScoreInt - player2ScoreInt) == 1) ? "Advantage " + scoreToReturnString
+              : "Win for " + scoreToReturnString;
     }
   }
 
   public void wonPoint(String playerName) {
     if (playerName == "player1") {
-      this.player1Score += 1;
+      this.player1ScoreInt += 1;
     } else {
-      this.player2Score += 1;
+      this.player2ScoreInt += 1;
     }
   }
 
