@@ -30,4 +30,9 @@ public class GetResponseService {
     ErrorBodyGreeterTitle errorBodyGreeterTitle = new ErrorBodyGreeterTitle();
     return errorBodyGreeterTitle;
   }
+
+  public GetAppendABody sendResultAppendA(String receivedString) {
+    GetAppendABody getAppendABody = new GetAppendABody(receivedString);
+    return getAppendABody;
+  }
 }
