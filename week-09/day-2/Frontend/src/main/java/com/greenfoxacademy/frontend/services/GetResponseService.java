@@ -1,20 +1,33 @@
 package com.greenfoxacademy.frontend.services;
 
-import com.greenfoxacademy.frontend.models.ErrorBody;
-import com.greenfoxacademy.frontend.models.GetResponseBody;
+import com.greenfoxacademy.frontend.models.*;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GetResponseService {
 
-  public GetResponseBody sendResult(String receivedInput) {
+  public GetResponseBody sendResultDoubling(String receivedInput) {
       GetResponseBody getResponseBody = new GetResponseBody(receivedInput);
       return getResponseBody;
   }
 
-  public ErrorBody sendErrorNullError() {
-      ErrorBody errorBody = new ErrorBody();
-      return errorBody;
+  public ErrorBodyDoubling sendErrorNullDoubling() {
+      ErrorBodyDoubling errorBodyDoubling = new ErrorBodyDoubling();
+      return errorBodyDoubling;
   }
 
+  public GetGreeterBody sendResultGreeter(String receivedName, String receivedTitle) {
+    GetGreeterBody getGreeterBody = new GetGreeterBody(receivedName, receivedTitle);
+    return getGreeterBody;
+  }
+
+  public ErrorBodyGreeterName sendErrorNullName() {
+    ErrorBodyGreeterName errorBodyGreeterName = new ErrorBodyGreeterName();
+    return errorBodyGreeterName;
+  }
+
+  public ErrorBodyGreeterTitle sendErrorNullTitle() {
+    ErrorBodyGreeterTitle errorBodyGreeterTitle = new ErrorBodyGreeterTitle();
+    return errorBodyGreeterTitle;
+  }
 }

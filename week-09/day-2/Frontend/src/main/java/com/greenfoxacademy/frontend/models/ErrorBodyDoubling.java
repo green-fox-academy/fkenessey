@@ -1,10 +1,10 @@
 package com.greenfoxacademy.frontend.models;
 
-public class ErrorBody implements Body {
+public class ErrorBodyDoubling implements Body {
 
   private String error;
 
-  public ErrorBody() {
+  public ErrorBodyDoubling() {
     this.error = "Please provide an input!";
   }
 
