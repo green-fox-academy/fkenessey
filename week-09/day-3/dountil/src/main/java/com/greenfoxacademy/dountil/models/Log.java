@@ -1,8 +1,7 @@
 package com.greenfoxacademy.dountil.models;
 
 import javax.persistence.*;
-import java.time.Instant;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "log_table")
@@ -13,27 +12,26 @@ public class Log {
   @Column(name = "log_id")
   private Long id;
   @Column(name = "log_creation_date")
-  private Date createdAt;
+  private String createdAt;
   @Column(name = "log_endpoint")
   private String endpoint;
-  @Column(name = "log_data")
-  private Object data;
+  @Column(name = "data")
+  private String data;
 
   public Log() {
   }
 
-  public Log(String endpoint, Object data) {
-    //this.createdAt = String.valueOf(LocalDate.now());
-    this.createdAt = Date.from(Instant.now());
+  public Log(String endpoint, String data) {
+    this.createdAt = String.valueOf(LocalDate.now());
     this.endpoint = endpoint;
     this.data = data;
   }
 
-  public Date getCreatedAt() {
+  public String getCreatedAt() {
     return createdAt;
   }
 
-  public void setCreatedAt(Date createdAt) {
+  public void setCreatedAt(String createdAt) {
     this.createdAt = createdAt;
   }
 
@@ -45,11 +43,19 @@ public class Log {
     this.endpoint = endpoint;
   }
 
-  public Object getData() {
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public String getData() {
     return data;
   }
 
-  public void setData(Object data) {
+  public void setData(String data) {
     this.data = data;
   }
 }

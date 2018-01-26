@@ -17,7 +17,7 @@ public class MainRestController {
   public ResponseEntity<?> responseEditorDoubling(@RequestParam(value = "input", required = false) String input) {
 
     if (input != null) {
-      //getResponseService.logBuilderAndAdder("/doubling", input);
+      getResponseService.newLogAdder("/doubling", "input: " + input);
       return new ResponseEntity<>(getResponseService.sendResultDoubling(input), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(new ErrorGeneral("Please provide an input!"), HttpStatus.BAD_REQUEST);
@@ -29,6 +29,7 @@ public class MainRestController {
                                     @RequestParam(value = "title", required = false) String title) {
 
     if (name != null && title != null) {
+      getResponseService.newLogAdder("/greeter", "name: " + name + ", title: " + title);
       return new ResponseEntity<>(getResponseService.sendResultGreeter(name, title), HttpStatus.OK);
     } else if (name == null) {
       return new ResponseEntity<>(new ErrorGeneral("Please provide a name!"), HttpStatus.BAD_REQUEST);
@@ -40,6 +41,7 @@ public class MainRestController {
   @GetMapping("/appenda/{appendable}")
   public Body responseEditorAppend(@PathVariable("appendable") String appendableInput) {
     if (appendableInput != null) {
+      getResponseService.newLogAdder("/appenda", "appendableInput: " + appendableInput);
       return getResponseService.sendResultAppendA(appendableInput);
     } else {
       return null;
@@ -50,6 +52,7 @@ public class MainRestController {
   public ResponseEntity<?> responseEditorDoUntil(@PathVariable(value = "what", required = false) String what,
                                     @RequestBody(required = false) PostDoUntilBody body) {
     if (body != null) {
+      getResponseService.newLogAdder("/dountil", "what: " + what + " object: " + body );
       return new ResponseEntity<>(getResponseService.sendResultDoUntil(what, body), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(new ErrorGeneral("Please provide a number!"), HttpStatus.BAD_REQUEST);
@@ -73,4 +76,14 @@ public class MainRestController {
                                                 ) {
     getResponseService
   }*/
+
+  @GetMapping("/log")
+  public ResponseEntity<?> responseEditorLog(@RequestParam(value = "page", required = false) Integer page,
+                                             @RequestParam(value = "size", required = false) Integer size) {
+    if ((page != null) && (size != null)) {
+      return new ResponseEntity<Object>(getResponseService.listLogsByPaging(page, size), HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(getResponseService.listAllLogs(), HttpStatus.OK);
+    }
+  }
 }

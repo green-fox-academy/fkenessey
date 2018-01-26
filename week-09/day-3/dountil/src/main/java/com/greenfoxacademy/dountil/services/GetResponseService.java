@@ -1,14 +1,25 @@
 package com.greenfoxacademy.dountil.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greenfoxacademy.dountil.models.*;
+import com.greenfoxacademy.dountil.models.DTOs.LogEntriesDto;
+import com.greenfoxacademy.dountil.repositories.LogPaging;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class GetResponseService {
 
   @Autowired
   LogServiceDbImpl logServiceDb;
+  @Autowired
+  LogPaging logPaging;
 
   public GetResponseBody sendResultDoubling(String receivedInput) {
       GetResponseBody getResponseBody = new GetResponseBody(receivedInput);
@@ -94,9 +105,27 @@ public class GetResponseService {
     return errorGeneral;
   }
 
-  public void logBuilderAndAdder(String enteredEndpoint, Object enteredObject) {
+  public void newLogAdder(String endpoint, Object enteredData) {
+    ObjectMapper converter = new ObjectMapper();
+    String convertedDataInputToString;
+    try {
+      convertedDataInputToString = converter.writeValueAsString(enteredData);
+    } catch (JsonProcessingException e) {
+      convertedDataInputToString = null;
+      e.printStackTrace();
+    }
+    logServiceDb.addLog(new Log(endpoint,convertedDataInputToString));
+  }
 
-    Log newLog =  new Log(enteredEndpoint, enteredObject);
-    logServiceDb.addLog(newLog);
+  public List<Log> listAllLogs() {
+    return logServiceDb.listLogs();
+  }
+
+  public LogEntriesDto listLogsByPaging(Integer page, Integer size) {
+    List<Log> logReturnList = new ArrayList<>();
+    PageRequest pageRequest = new PageRequest(page, size, Sort.Direction.DESC, "createdAt");
+    logPaging.findAll(pageRequest).forEach(logReturnList::add);
+    LogEntriesDto logEntriesDto = new LogEntriesDto(logReturnList, logReturnList.size());
+    return logEntriesDto;
   }
 }

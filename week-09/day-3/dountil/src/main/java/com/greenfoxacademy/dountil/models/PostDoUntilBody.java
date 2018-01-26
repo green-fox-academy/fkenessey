@@ -26,4 +26,12 @@ public class PostDoUntilBody implements Body{
   public void setResult(int result) {
     this.result = result;
   }
+
+  @Override
+  public String toString() {
+    return "PostDoUntilBody{" +
+            "until=" + until +
+            ", result=" + result +
+            '}';
+  }
 }
