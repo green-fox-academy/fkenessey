@@ -8,7 +8,11 @@ public interface LicencePlateService {
 
   List<LicencePlate> listAllPlates();
 
-  List<LicencePlate> ListPolicePlates();
+  List<LicencePlate> listPolicePlates();
 
-  List<LicencePlate> ListDiplomatPlates();
+  List<LicencePlate> listDiplomatPlates();
+
+  List<LicencePlate> listBrandPlates(String brand);
+
+  List<LicencePlate> listSearchedPlates(String plateNumber);
 }

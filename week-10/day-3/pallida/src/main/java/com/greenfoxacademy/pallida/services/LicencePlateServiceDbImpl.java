@@ -22,16 +22,30 @@ public class LicencePlateServiceDbImpl implements LicencePlateService {
   }
 
   @Override
-  public List<LicencePlate> ListPolicePlates() {
+  public List<LicencePlate> listPolicePlates() {
     List<LicencePlate> policePlateList = new ArrayList<>();
-    licencePlateRepository.findAllByLicencePlateStartsWithOrderByYearDesc("RB").forEach(policePlateList::add);
+    licencePlateRepository.findAllByLicencePlateStartsWithOrderByYearAsc("RB").forEach(policePlateList::add);
     return policePlateList;
   }
 
   @Override
-  public List<LicencePlate> ListDiplomatPlates() {
+  public List<LicencePlate> listDiplomatPlates() {
     List<LicencePlate> diplomatPlateList = new ArrayList<>();
-    licencePlateRepository.findAllByLicencePlateStartsWithOrderByYearDesc("DT").forEach(diplomatPlateList::add);
+    licencePlateRepository.findAllByLicencePlateStartsWithOrderByYearAsc("DT").forEach(diplomatPlateList::add);
     return diplomatPlateList;
+  }
+
+  @Override
+  public List<LicencePlate> listBrandPlates(String brand) {
+    List<LicencePlate> brandPlateList = new ArrayList<>();
+    licencePlateRepository.findAllByBrandOrderByYearAsc(brand).forEach(brandPlateList::add);
+    return brandPlateList;
+  }
+
+  @Override
+  public List<LicencePlate> listSearchedPlates(String plateNumber) {
+    List<LicencePlate> searchedPlateList = new ArrayList<>();
+    licencePlateRepository.findAllByLicencePlateContainsOrderByYearAsc(plateNumber).forEach(searchedPlateList::add);
+    return searchedPlateList;
   }
 }

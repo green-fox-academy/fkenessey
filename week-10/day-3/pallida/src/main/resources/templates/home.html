@@ -8,13 +8,16 @@
 </head>
 <body>
 
-<form th:action="@{/search}">
-
-</form>
-
 <a th:href="@{/search?police=only}">Police cars only</a>
 
 <a th:href="@{/search?diplomat=only}">Diplomats only</a>
+
+<form th:action="@{/search}" th:method="get">
+    <input type="text" name="q"/>
+    <input type="submit" value="Search"/>
+</form>
+
+<p th:text="${error.error}"/>
 
 <div class="table-bordered">
    <table class="table table-striped" border="1">
@@ -29,12 +32,13 @@
        </thead>
         <tr scope="row" th:each="plate : ${licence_plate_list}" th:object="${plate}" >
             <td th:text="*{licencePlate}"/>
-            <td th:text="*{brand}"/>
+            <td><a th:href="@{/search/} + *{brand}" th:text="*{brand}"/></td>
             <td th:text="*{model}"/>
             <td th:text="*{colour}"/>
             <td th:text="*{year}"/>
         </tr>
     </table>
 </div>
+
 </body>
 </html>

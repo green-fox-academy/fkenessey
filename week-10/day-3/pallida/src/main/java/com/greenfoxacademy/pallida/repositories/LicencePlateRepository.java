@@ -9,5 +9,9 @@ import java.util.List;
 @Repository
 public interface LicencePlateRepository extends CrudRepository<LicencePlate, Long>{
 
-  List<LicencePlate> findAllByLicencePlateStartsWithOrderByYearDesc(String policeFilter);
+  List<LicencePlate> findAllByLicencePlateStartsWithOrderByYearAsc(String policeFilter);
+
+  List<LicencePlate> findAllByBrandOrderByYearAsc(String brandFilter);
+
+  List<LicencePlate> findAllByLicencePlateContainsOrderByYearAsc(String plateNumber);
 }
