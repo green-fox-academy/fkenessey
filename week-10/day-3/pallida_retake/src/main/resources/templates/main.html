@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listing Licence Plates</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+<h1 align="center">Green Fox Fashion Web Store</h1>
+
+<form th:action="@{/warehouse/summary}" th:object="${emptyMerchandise}" th:method="post">
+    <select th:field="*{itemName}">
+        <option th:each="itemName : ${distinctByItemNameList}"
+                th:value="${itemName}"
+                th:text="${itemName}">Select Item</option>
+    </select>
+    <input type="submit" value="Submit"/>
+</form>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr scope="col">
+            <th>Id</th>
+            <th>Name of Item</th>
+            <th>Manufacturer</th>
+            <th>Category</th>
+            <th>Size</th>
+            <th>Price per Unit</th>
+        </tr>
+        </thead>
+        <tr scope="row" th:each="merchandise : ${merchandiseList}" th:object="${merchandise}">
+            <td th:text="*{id}"/>
+            <td th:text="*{itemName}"/>
+            <td th:text="*{manufacturer}"/>
+            <td th:text="*{category}"/>
+            <td th:text="*{size}"/>
+            <td th:text="*{unitPrice}"/>
+        </tr>
+
+    </table>
+</div>
+
+</body>
+</html>
