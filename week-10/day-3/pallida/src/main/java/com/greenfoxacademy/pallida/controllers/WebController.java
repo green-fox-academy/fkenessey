@@ -1,6 +1,5 @@
 package com.greenfoxacademy.pallida.controllers;
 
-import com.greenfoxacademy.pallida.Factory.ErrorMessageFactory;
 import com.greenfoxacademy.pallida.services.ErrorMessageServiceImpl;
 import com.greenfoxacademy.pallida.services.LicencePlateServiceDbImpl;
 import org.springframework.beans.factory.annotation.Autowired;

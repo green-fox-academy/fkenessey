@@ -1,5 +1,7 @@
 package com.greenfoxacademy.pallida.services;
 
+import com.greenfoxacademy.pallida.Factory.LicencePlateDtoFactory;
+import com.greenfoxacademy.pallida.models.DTOs.LicencePlateDto;
 import com.greenfoxacademy.pallida.models.LicencePlate;
 import com.greenfoxacademy.pallida.repositories.LicencePlateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ public class LicencePlateServiceDbImpl implements LicencePlateService {
 
   @Autowired
   LicencePlateRepository licencePlateRepository;
+  @Autowired
+  LicencePlateDtoFactory licencePlateDtoFactory;
 
   @Override
   public List<LicencePlate> listAllPlates() {
@@ -47,5 +51,12 @@ public class LicencePlateServiceDbImpl implements LicencePlateService {
     List<LicencePlate> searchedPlateList = new ArrayList<>();
     licencePlateRepository.findAllByLicencePlateContainsOrderByYearAsc(plateNumber).forEach(searchedPlateList::add);
     return searchedPlateList;
+  }
+
+  @Override
+  public LicencePlateDto createLicencePlateDtoByBrand(String brand, String result) {
+    List<LicencePlate> brandPlateList = new ArrayList<>();
+    licencePlateRepository.findAllByBrandOrderByYearAsc(brand).forEach(brandPlateList::add);
+    return licencePlateDtoFactory.createNewLPDto(result, brandPlateList);
   }
 }
