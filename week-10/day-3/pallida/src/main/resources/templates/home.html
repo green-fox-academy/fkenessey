@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listing Licence Plates</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="utf-8" />
+</head>
+<body>
+
+<form th:action="@{/search}">
+
+</form>
+
+<a th:href="@{/search?police=only}">Police cars only</a>
+
+<a th:href="@{/search?diplomat=only}">Diplomats only</a>
+
+<div class="table-bordered">
+   <table class="table table-striped" border="1">
+       <thead>
+       <tr scope="col">
+           <th>Licence plate</th>
+           <th>Brand</th>
+           <th>Model</th>
+           <th>Colour</th>
+           <th>Year</th>
+       </tr>
+       </thead>
+        <tr scope="row" th:each="plate : ${licence_plate_list}" th:object="${plate}" >
+            <td th:text="*{licencePlate}"/>
+            <td th:text="*{brand}"/>
+            <td th:text="*{model}"/>
+            <td th:text="*{colour}"/>
+            <td th:text="*{year}"/>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
