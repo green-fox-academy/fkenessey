@@ -69,14 +69,6 @@ public class MainRestController {
     }
   }
 
-  /*@RequestMapping(value = "/{endpoint}")
-  public ResponseEntity<?> responseEditorLogger(@PathVariable(value = "endpoint", required = false) String endpoint,
-                                                @RequestParam(value = "input", required = false) String input,
-                                                @RequestParam(value = "name", required = false) String name,
-                                                ) {
-    getResponseService
-  }*/
-
   @GetMapping("/log")
   public ResponseEntity<?> responseEditorLog(@RequestParam(value = "page", required = false) Integer page,
                                              @RequestParam(value = "size", required = false) Integer size) {
@@ -84,6 +76,16 @@ public class MainRestController {
       return new ResponseEntity<Object>(getResponseService.listLogsByPaging(page, size), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(getResponseService.listAllLogs(), HttpStatus.OK);
+    }
+  }
+
+  @PostMapping("/sith")
+  public ResponseEntity<?> responseEditorSith(@RequestBody Object enteredObject){
+    if (enteredObject != null) {
+      return new ResponseEntity<Object>(getResponseService.sithReverser(enteredObject), HttpStatus.OK);
+    } else {
+      return new ResponseEntity<Object>(new ErrorGeneral("Feed me some text you have to, padawan young you are. Hmmm."),
+              HttpStatus.BAD_REQUEST);
     }
   }
 }

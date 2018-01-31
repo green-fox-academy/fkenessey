@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greenfoxacademy.dountil.models.*;
 import com.greenfoxacademy.dountil.models.DTOs.LogEntriesDto;
+import com.greenfoxacademy.dountil.models.DTOs.SithReverserDto;
 import com.greenfoxacademy.dountil.repositories.LogPaging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +13,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Character.isUpperCase;
+import static java.lang.Character.toLowerCase;
+import static java.lang.Character.toUpperCase;
 
 @Service
 public class GetResponseService {
@@ -127,5 +132,64 @@ public class GetResponseService {
     logPaging.findAll(pageRequest).forEach(logReturnList::add);
     LogEntriesDto logEntriesDto = new LogEntriesDto(logReturnList, logReturnList.size());
     return logEntriesDto;
+  }
+
+  public SithReverserDto sithReverser(Object enteredObject) {
+    ObjectMapper converter = new ObjectMapper();
+    String enteredInput;
+    try {
+      enteredInput = converter.writeValueAsString(enteredObject);
+    } catch (JsonProcessingException e) {
+      enteredInput = null;
+      e.printStackTrace();
+    }
+    return new SithReverserDto(editorJoda(enteredInput));
+  }
+
+  private String editorJoda(String enteredInput) {
+    String[] enteredWords = enteredInput.split(" ");
+
+    int counter = 0;
+    String[] randomExpressions = {"Arrgh.", "Uhmm", "Err..err.err.", "Yoo!"};
+
+    for (int i = 0; i < enteredWords.length; i++) {
+      if (!enteredWords[i].endsWith(".") && !enteredWords[i].endsWith("?") && !enteredWords[i].endsWith("!")) {
+        if (counter % 2 != 0) {
+          if (!isUpperCase(enteredWords[i].charAt(0))) {
+            String temp;
+            temp = enteredWords[i];
+            enteredWords[i] = enteredWords[i - 1];
+            enteredWords[i - 1] = temp;
+          } else {
+            String temp;
+            temp = enteredWords[i];
+            String[] tempSplit = temp.split(String.valueOf(temp.charAt(0)));
+            temp = String.valueOf(toUpperCase(temp.charAt(0)) + tempSplit[1]);
+            enteredWords[i - 1] = temp;
+            tempSplit = enteredWords[i - 1].split(String.valueOf(temp.charAt(0)));
+            enteredWords[i - 1] = String.valueOf(toLowerCase(temp.charAt(0)) + tempSplit[1]);
+            enteredWords[i] = enteredWords[i - 1];
+          }
+        }
+      }
+    }
+
+    List<String> enteredWordsArrayList = new ArrayList<>();
+    for (int j = 0; j < enteredWords.length; j++) {
+      enteredWordsArrayList.add(enteredWords[j]);
+    }
+
+    String stringToReturn = null;
+    for (int i = 0; i < enteredWordsArrayList.size(); i++) {
+      if (enteredWords[i].endsWith(".") || enteredWords[i].endsWith("?") || enteredWords[i].endsWith("!")) {
+        enteredWordsArrayList.add(i + 1, randomExpressions[(int) (Math.random() * randomExpressions.length)]);
+      }
+    }
+
+    for (int i = 0; i < enteredWordsArrayList.size(); i++) {
+      stringToReturn = stringToReturn + enteredWordsArrayList.get(i);
+    }
+
+    return stringToReturn;
   }
 }
