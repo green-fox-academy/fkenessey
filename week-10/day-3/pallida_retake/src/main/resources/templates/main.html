@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Listing Licence Plates</title>
+    <title>Green Fox Fashion</title>
     <link rel="stylesheet" th:href="@{/style.css}" />
     <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
     <meta charset="utf-8" />
@@ -10,13 +10,23 @@
 
 <h1 align="center">Green Fox Fashion Web Store</h1>
 
-<form th:action="@{/warehouse/summary}" th:object="${emptyMerchandise}" th:method="post">
+<form th:action="@{/warehouse/summary}" th:object="${shoppingBasketDTO}" th:method="post">
+
     <select th:field="*{itemName}">
         <option th:each="itemName : ${distinctByItemNameList}"
                 th:value="${itemName}"
                 th:text="${itemName}">Select Item</option>
     </select>
-    <input type="submit" value="Submit"/>
+
+    <select th:field="*{size}">
+        <option th:each="size : ${distinctBySizeList}"
+                th:value="${size}"
+                th:text="${size}">Select Item</option>
+    </select>
+
+    <input type="text" th:field="*{quantity}"/>
+
+    <input type="submit" value="GET TOTAL"/>
 </form>
 
 <div>

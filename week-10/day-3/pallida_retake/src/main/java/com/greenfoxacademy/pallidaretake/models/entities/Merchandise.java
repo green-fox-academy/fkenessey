@@ -1,4 +1,4 @@
-package com.greenfoxacademy.pallidaretake.models;
+package com.greenfoxacademy.pallidaretake.models.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

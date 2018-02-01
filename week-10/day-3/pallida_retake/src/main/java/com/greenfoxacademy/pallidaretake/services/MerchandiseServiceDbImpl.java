@@ -1,11 +1,11 @@
 package com.greenfoxacademy.pallidaretake.services;
 
-import com.greenfoxacademy.pallidaretake.models.Merchandise;
+import com.greenfoxacademy.pallidaretake.models.DTOs.ShoppingBasketDTO;
+import com.greenfoxacademy.pallidaretake.models.entities.Merchandise;
 import com.greenfoxacademy.pallidaretake.repositories.MerchandiseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +25,17 @@ public class MerchandiseServiceDbImpl implements MerchandiseService {
   }
 
   @Override
+  public List<String> listAllDistinctSize() {
+    return (List<String>) merchandiseRepository.findAllDistinctSize();
+  }
+
+  @Override
   public List<Merchandise> listAllSelectedItemName(Merchandise selectedMerchandise) {
     return (List<Merchandise>) merchandiseRepository.findAllByItemName(selectedMerchandise.getItemName());
+  }
+
+  @Override
+  public Merchandise findSelectedMerchandise(ShoppingBasketDTO shoppingBasketDTO) {
+    return merchandiseRepository.findDistinctByItemNameAndAndSize(shoppingBasketDTO.getItemName(), shoppingBasketDTO.getSize());
   }
 }
