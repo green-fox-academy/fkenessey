@@ -9,12 +9,6 @@ public class ShoppingBasketDTO {
   public ShoppingBasketDTO() {
   }
 
-  public ShoppingBasketDTO(String itemName, String size, int quantity) {
-    this.itemName = itemName;
-    this.size = size;
-    this.quantity = quantity;
-  }
-
   public String getItemName() {
     return itemName;
   }

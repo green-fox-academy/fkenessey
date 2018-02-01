@@ -1,8 +1,7 @@
 package com.greenfoxacademy.pallidaretake.controllers;
 
-import com.greenfoxacademy.pallidaretake.factories.WebFactory;
+import com.greenfoxacademy.pallidaretake.factories.DTOFactory;
 import com.greenfoxacademy.pallidaretake.models.DTOs.ShoppingBasketDTO;
-import com.greenfoxacademy.pallidaretake.models.entities.Merchandise;
 import com.greenfoxacademy.pallidaretake.services.MerchandiseServiceDbImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,7 @@ public class WebController {
   @Autowired
   MerchandiseServiceDbImpl merchandiseServiceDb;
   @Autowired
-  WebFactory webFactory;
+  DTOFactory webFactory;
 
   @GetMapping("/warehouse")
   public String showMainPage(Model model) {

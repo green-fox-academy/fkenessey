@@ -1,5 +1,6 @@
 package com.greenfoxacademy.pallidaretake.services;
 
+import com.greenfoxacademy.pallidaretake.models.DTOs.QueryDTO;
 import com.greenfoxacademy.pallidaretake.models.DTOs.ShoppingBasketDTO;
 import com.greenfoxacademy.pallidaretake.models.entities.Merchandise;
 
@@ -12,7 +13,7 @@ public interface MerchandiseService {
 
   List<String> listAllDistinctSize();
 
-  List<Merchandise> listAllSelectedItemName(Merchandise selectedMerchandise);
-
   Merchandise findSelectedMerchandise(ShoppingBasketDTO shoppingBasketDTO);
+
+  QueryDTO createReposneQuery(Double price, String type);
 }

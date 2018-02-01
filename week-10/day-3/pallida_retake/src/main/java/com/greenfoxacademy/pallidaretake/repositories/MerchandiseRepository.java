@@ -16,7 +16,11 @@ public interface MerchandiseRepository extends CrudRepository<Merchandise, Long>
   @Query(value = "SELECT DISTINCT size FROM Merchandise")
   List<String> findAllDistinctSize();
 
-  List<Merchandise> findAllByItemName(String itemName);
-
   Merchandise findDistinctByItemNameAndAndSize(String itemName, String size);
+
+  List<Merchandise> findAllByUnitPriceIsLessThan(Double price);
+
+  List<Merchandise> findAllByUnitPriceGreaterThan(Double price);
+
+  List<Merchandise> findAllByUnitPriceEquals(Double price);
 }

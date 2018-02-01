@@ -1,5 +1,6 @@
 package com.greenfoxacademy.pallidaretake.services;
-
+import com.greenfoxacademy.pallidaretake.factories.DTOFactory;
+import com.greenfoxacademy.pallidaretake.models.DTOs.QueryDTO;
 import com.greenfoxacademy.pallidaretake.models.DTOs.ShoppingBasketDTO;
 import com.greenfoxacademy.pallidaretake.models.entities.Merchandise;
 import com.greenfoxacademy.pallidaretake.repositories.MerchandiseRepository;
@@ -13,6 +14,8 @@ public class MerchandiseServiceDbImpl implements MerchandiseService {
 
   @Autowired
   MerchandiseRepository merchandiseRepository;
+  @Autowired
+  DTOFactory dtoFactory;
 
   @Override
   public List<Merchandise> listAllMerchandise() {
@@ -30,12 +33,20 @@ public class MerchandiseServiceDbImpl implements MerchandiseService {
   }
 
   @Override
-  public List<Merchandise> listAllSelectedItemName(Merchandise selectedMerchandise) {
-    return (List<Merchandise>) merchandiseRepository.findAllByItemName(selectedMerchandise.getItemName());
+  public Merchandise findSelectedMerchandise(ShoppingBasketDTO shoppingBasketDTO) {
+    return merchandiseRepository.findDistinctByItemNameAndAndSize(shoppingBasketDTO.getItemName(), shoppingBasketDTO.getSize());
   }
 
   @Override
-  public Merchandise findSelectedMerchandise(ShoppingBasketDTO shoppingBasketDTO) {
-    return merchandiseRepository.findDistinctByItemNameAndAndSize(shoppingBasketDTO.getItemName(), shoppingBasketDTO.getSize());
+  public QueryDTO createReposneQuery(Double price, String type) {
+    if (type.equals("lower")) {
+      return dtoFactory.createNewQueryDTO("ok", merchandiseRepository.findAllByUnitPriceIsLessThan(price));
+    } else if (type.equals("above")) {
+      return dtoFactory.createNewQueryDTO("ok", merchandiseRepository.findAllByUnitPriceGreaterThan(price));
+    } else if (type.equals("equal")){
+      return dtoFactory.createNewQueryDTO("ok", merchandiseRepository.findAllByUnitPriceEquals(price));
+    } else {
+      return dtoFactory.createNewQueryDTO("error, incorrect input variables", null);
+    }
   }
 }
