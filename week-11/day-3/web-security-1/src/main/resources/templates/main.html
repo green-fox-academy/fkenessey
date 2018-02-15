@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listing ToDos</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="utf-8" />
+</head>
+<body>
+<div class="col-md-4">
+    <h1 class="text-uppercase">Todos for today:</h1>
+</div>
+<form action="#" th:action="@{/todo/search}" method="get">
+    <input type="text" name="title" placeholder="Search title"/>
+    <input type="text" name="id" placeholder="Search id"/>
+    <input class="btn btn-danger" value="search" type="submit"/>
+</form>
+<a th:href="@{/todo/assignee}" method="get">List of assignees</a>
+<a th:href="@{/todo/}">Home</a>
+<a th:href="@{/}">Log out</a>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ACTION</th>
+        <th>ASSIGNEE</th>
+        <th>URGENT</th>
+        <th>DONE</th>
+        <th>DELETE</th>
+        <th>EDIT</th>
+    </tr>
+    <td>
+        <tr th:each="todo: ${repoList}">
+            <td th:text="${todo.id}" />
+            <td th:text="${todo.title}" />
+            <td th:text="${todo.assignee.name}" />
+            <td th:text="${todo.createdAtString}" />
+            <td th:if="${todo.isUrgent}"><span class="glyphicon glyphicon-ok"></span></td>
+            <td th:unless="${todo.isUrgent}"><span class="glyphicon glyphicon-remove"></span></td>
+            <td th:if="${todo.isDone}"><span class="glyphicon glyphicon-ok"></span></td>
+            <td th:unless="${todo.isDone}"><span class="glyphicon glyphicon-remove"></span></td>
+            <td>
+                <form action="#" th:action="@{/todo/} + ${todo.id} + '/delete'" method="post">
+                    <input class="btn btn-danger" value="Delete" type="submit"/>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/todo/} + ${todo.id} + '/edit'" method="get">
+                    <input class="btn btn-primary" value="Edit" type="submit"/>
+                </form>
+            </td>
+        </tr>
+    </td>
+</table>
+<script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>
