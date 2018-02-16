@@ -16,18 +16,18 @@ import java.time.LocalDate;
     private String createdAtString = String.valueOf(LocalDate.now());
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "assignee_id")
-    private Assignee assignee;
+    @JoinColumn(name = "user_name")
+    private SiteUser siteUser;
 
     public ToDo() {
     }
 
-    public ToDo(String title, Assignee assignee) {
+    public ToDo(String title, SiteUser siteUser) {
       this.id = id;
       this.title = title;
       this.isUrgent = false;
       this.isDone = false;
-      this.assignee = assignee;
+      this.siteUser = siteUser;
       this.createdAtString = createdAtString;
     }
 
@@ -79,12 +79,12 @@ import java.time.LocalDate;
       isDone = done;
     }
 
-    public Assignee getAssignee() {
-      return assignee;
+    public SiteUser getSiteUser() {
+      return siteUser;
     }
 
-    public void setAssignee(Assignee assignee) {
-      this.assignee = assignee;
+    public void setSiteUser(SiteUser siteUser) {
+      this.siteUser = siteUser;
     }
 
     public String getCreatedAtString() {

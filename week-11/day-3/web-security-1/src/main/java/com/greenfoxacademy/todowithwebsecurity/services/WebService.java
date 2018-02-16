@@ -1,6 +1,7 @@
 package com.greenfoxacademy.todowithwebsecurity.services;
 
 import com.greenfoxacademy.todowithwebsecurity.models.SiteUser;
+import com.greenfoxacademy.todowithwebsecurity.models.ToDo;
 import com.greenfoxacademy.todowithwebsecurity.repositories.SiteUserRepository;
 import com.greenfoxacademy.todowithwebsecurity.repositories.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class WebService {
     }
   }
 
-  public List fullTodoList() {
-    return (List) toDoRepository.findAll();
+  public List fullTodoListByUserName(String userName) {
+    return (List) toDoRepository.findAllBySiteUserUserName(userName);
   }
 
   public boolean isCorrectCookie(String userNameFromCookie) {
@@ -43,5 +44,13 @@ public class WebService {
     } else {
       return false;
     }
+  }
+
+  public SiteUser findSiteUserByUserName(String userNameFromCookie) {
+    return siteUserRepository.findByUserName(userNameFromCookie);
+  }
+
+  public void saveNewToDo(ToDo newToDo) {
+    toDoRepository.save(newToDo);
   }
 }

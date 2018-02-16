@@ -16,13 +16,13 @@
     <input class="btn btn-danger" value="search" type="submit"/>
 </form>
 <a th:href="@{/todo/assignee}" method="get">List of assignees</a>
-<a th:href="@{/todo/}">Home</a>
-<a th:href="@{/}">Log out</a>
+<a th:href="@{/todo/add}">Add new todo</a>
+<a href="/siteuser/logout">Log out</a>
 <table class="table">
     <tr>
         <th>ID</th>
         <th>ACTION</th>
-        <th>ASSIGNEE</th>
+        <th>CREATED AT</th>
         <th>URGENT</th>
         <th>DONE</th>
         <th>DELETE</th>
@@ -32,7 +32,6 @@
         <tr th:each="todo: ${repoList}">
             <td th:text="${todo.id}" />
             <td th:text="${todo.title}" />
-            <td th:text="${todo.assignee.name}" />
             <td th:text="${todo.createdAtString}" />
             <td th:if="${todo.isUrgent}"><span class="glyphicon glyphicon-ok"></span></td>
             <td th:unless="${todo.isUrgent}"><span class="glyphicon glyphicon-remove"></span></td>
