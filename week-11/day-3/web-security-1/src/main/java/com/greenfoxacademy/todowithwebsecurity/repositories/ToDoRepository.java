@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ToDoRepository extends CrudRepository<ToDo,Integer> {
 
-  List<ToDo> findAllBySiteUserUserName(String userName);
+  List<ToDo> findAllBySiteUserUsername(String username);
 }

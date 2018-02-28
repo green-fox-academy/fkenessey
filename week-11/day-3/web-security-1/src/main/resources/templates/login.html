@@ -11,16 +11,15 @@
 <h1 class="text-uppercase">Enter The Todos for today:</h1>
 
 <form action="#" th:action="@{/login}" th:object="${siteUser}" method="post">
-    <input type="text" placeholder="enter username" th:field="*{userName}"/>
+    <input type="text" placeholder="enter username" th:field="*{username}"/>
     <input type="text" placeholder="enter password" th:field="*{password}"/>
     <input class="btn btn-danger" value="Login" type="submit"/>
 </form>
 
-<!--<form action = "HelloForm" method = "GET">
-    First Name: <input type = "text" name = "first_name">
-    <br />
-    Last Name: <input type = "text" name = "last_name" />
-    <input type = "submit" value = "Submit" />
+<!--<form th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
 </form>-->
 
 <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>

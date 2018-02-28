@@ -8,24 +8,30 @@ public class SiteUser {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id")
   private long id;
-  private String userName;
+  @Column(name = "username")
+  private String username;
+  @Column(name = "password")
   private String password;
+  @Column(name = "role")
+  private String role;
 
   public SiteUser() {
   }
 
-  public SiteUser(String userName, String password) {
-    this.userName = userName;
+  public SiteUser(String username, String password) {
+    this.username = username;
     this.password = password;
+    this.role = "USER";
   }
 
-  public String getUserName() {
-    return userName;
+  public String getUsername() {
+    return username;
   }
 
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public String getPassword() {
@@ -34,5 +40,13 @@ public class SiteUser {
 
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
   }
 }

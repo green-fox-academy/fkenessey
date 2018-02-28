@@ -19,9 +19,9 @@ public class WebService {
 
   public boolean ifSiteUserAttributesCorrect(SiteUser siteUserInput) {
 
-    if (siteUserRepository.findByUserName(siteUserInput.getUserName()) != null) {
+    if (siteUserRepository.findByUsername(siteUserInput.getUsername()) != null) {
 
-      SiteUser siteUserFromDatabase = siteUserRepository.findByUserName(siteUserInput.getUserName());
+      SiteUser siteUserFromDatabase = siteUserRepository.findByUsername(siteUserInput.getUsername());
 
       if (siteUserInput.getPassword().equals(siteUserFromDatabase.getPassword())) {
         return true;
@@ -29,17 +29,17 @@ public class WebService {
         return false;
       }
     } else {
-      siteUserRepository.save(new SiteUser(siteUserInput.getUserName(), siteUserInput.getPassword()));
+      siteUserRepository.save(new SiteUser(siteUserInput.getUsername(), siteUserInput.getPassword()));
       return true;
     }
   }
 
   public List fullTodoListByUserName(String userName) {
-    return (List) toDoRepository.findAllBySiteUserUserName(userName);
+    return (List) toDoRepository.findAllBySiteUserUsername(userName);
   }
 
   public boolean isCorrectCookie(String userNameFromCookie) {
-    if (siteUserRepository.findByUserName(userNameFromCookie) != null) {
+    if (siteUserRepository.findByUsername(userNameFromCookie) != null) {
       return true;
     } else {
       return false;
@@ -47,7 +47,7 @@ public class WebService {
   }
 
   public SiteUser findSiteUserByUserName(String userNameFromCookie) {
-    return siteUserRepository.findByUserName(userNameFromCookie);
+    return siteUserRepository.findByUsername(userNameFromCookie);
   }
 
   public void saveNewToDo(ToDo newToDo) {

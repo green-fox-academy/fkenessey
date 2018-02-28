@@ -17,7 +17,10 @@
 </form>
 <a th:href="@{/todo/assignee}" method="get">List of assignees</a>
 <a th:href="@{/todo/add}">Add new todo</a>
-<a href="/siteuser/logout">Log out</a>
+<a th:href="@{/logout}">Log out</a>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 <table class="table">
     <tr>
         <th>ID</th>
