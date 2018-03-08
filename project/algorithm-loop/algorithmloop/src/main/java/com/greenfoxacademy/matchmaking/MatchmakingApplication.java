@@ -1,6 +1,5 @@
 package com.greenfoxacademy.matchmaking;
 
-import com.greenfoxacademy.matchmaking.services.Algorthm;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

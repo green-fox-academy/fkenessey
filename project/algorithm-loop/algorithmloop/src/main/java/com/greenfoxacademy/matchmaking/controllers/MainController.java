@@ -2,7 +2,7 @@ package com.greenfoxacademy.matchmaking.controllers;
 
 import com.greenfoxacademy.matchmaking.repositories.ApprenticeRepository;
 import com.greenfoxacademy.matchmaking.repositories.PartnerRepository;
-import com.greenfoxacademy.matchmaking.services.Algorthm;
+import com.greenfoxacademy.matchmaking.services.AlgorithmService;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
@@ -26,7 +26,7 @@ public class MainController {
   PartnerRepository partnerRepository;
 
   @Autowired
-  Algorthm algorthm;
+  AlgorithmService algorithmService;
 
   @GetMapping(value = "/user")
   public Principal user(Principal principal) {
@@ -64,11 +64,7 @@ public class MainController {
 
   @RequestMapping("/matchmaking")
   public List matchmaking() {
-    return algorthm.matchmaker();
+    return algorithmService.matchmaker();
   }
 
-  @GetMapping("/test")
-  public Object test() {
-    return apprenticeRepository.findAll();
-  }
 }
