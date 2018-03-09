@@ -31,6 +31,16 @@ public class Apprentice extends User {
     super(email, phoneNumber);
   }
 
+  public Apprentice(String email, String phoneNumber, String firstName, String lastName, String cohort, String cohortClass, boolean isHungarianSpeaker, String slackChannelId) {
+    super(email, phoneNumber);
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.cohort = cohort;
+    this.cohortClass = cohortClass;
+    this.isHungarianSpeaker = isHungarianSpeaker;
+    this.slackChannelId = slackChannelId;
+  }
+
   public String getFirstName() {
     return firstName;
   }

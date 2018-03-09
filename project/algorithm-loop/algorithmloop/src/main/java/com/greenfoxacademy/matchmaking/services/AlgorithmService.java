@@ -52,7 +52,10 @@ public class AlgorithmService {
 
             break;
 
-          } else {
+          } else if (!preferenceRepository
+                  .findByUserAndSelectionId(
+                          partnerRepository.findById(currentUserPreferenceList.get(j).getSelectionId()),
+                          allApprentices.get(i).getId()).equals("")){
 
             int partnerSRankingOfAlreadyRecordedApprenticeMatch = preferenceRepository
                     .findByUserAndSelectionId(

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import static com.greenfoxacademy.matchmaking.models.Enums.Status.ACTIVE;
+
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User {
@@ -25,18 +27,26 @@ public abstract class User {
 
   public User() {
     this.id = UUID.randomUUID().toString();
+    this.status = ACTIVE;
+    this.matchedUserId = null;
   }
 
   public User(String email) {
     this.id = UUID.randomUUID().toString();
     this.email = email;
+    this.status = ACTIVE;
+    this.matchedUserId = null;
   }
 
   public User(String email, String phoneNumber) {
     this.id = UUID.randomUUID().toString();
     this.email = email;
     this.phoneNumber = phoneNumber;
+    this.status = ACTIVE;
+    this.matchedUserId = null;
   }
+
+
 
   public String getId() {
     return this.id;

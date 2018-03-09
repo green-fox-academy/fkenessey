@@ -9,7 +9,7 @@ import java.util.List;
 public interface ExternalRestCommunicationService {
 
 //  @Headers({
-//          //access token shall be entered here
+//          //TODO:access token shall be entered here
 //  })
   @GET("api/apprentice")
   Call<List<Object>> ListAllApprentices(@Query("firstName") String firstName,
@@ -21,7 +21,7 @@ public interface ExternalRestCommunicationService {
                                         @Query("status") Status status);
 
 //  @Headers({
-//          //access token shall be entered here
+//          //TODO:access token shall be entered here
 //  })
   @GET("api/partner")
   Call<List<Object>> ListAllPartners(@Query("companyName") String companyName,
@@ -29,7 +29,7 @@ public interface ExternalRestCommunicationService {
                                      @Query("status") Status status);
 
 //  @Headers({
-//          //access token shall be entered here
+//          //TODO:access token shall be entered here
 //  })
   @GET("api/admin")
   Call<List<Object>> ListAllAdmin(@Query("firstName") String firstName,
