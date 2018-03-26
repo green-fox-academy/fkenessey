@@ -56,8 +56,6 @@ public class AlgorithmServiceTest {
     preferences.add(new Preference(2, partners.get(0).getId(), apprentices.get(1)));
     preferences.add(new Preference(3, partners.get(2).getId(), apprentices.get(1)));
 
-    String id;
-
     when(apprenticeRepositoryMock.findAll()).thenReturn(apprentices);
 
     when(apprenticeRepositoryMock.findById(apprentices.get(0).getId())).thenReturn(apprentices.get(0));

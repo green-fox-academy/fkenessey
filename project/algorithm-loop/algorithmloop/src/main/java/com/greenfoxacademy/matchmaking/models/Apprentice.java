@@ -1,6 +1,7 @@
 package com.greenfoxacademy.matchmaking.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "apprentice")

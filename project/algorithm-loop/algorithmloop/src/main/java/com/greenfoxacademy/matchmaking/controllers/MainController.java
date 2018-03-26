@@ -2,12 +2,11 @@ package com.greenfoxacademy.matchmaking.controllers;
 
 import com.greenfoxacademy.matchmaking.repositories.ApprenticeRepository;
 import com.greenfoxacademy.matchmaking.repositories.PartnerRepository;
-import com.greenfoxacademy.matchmaking.services.AlgorithmService;
+import com.greenfoxacademy.matchmaking.services.*;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
 import com.greenfoxacademy.matchmaking.models.Enums.Status;
-import com.greenfoxacademy.matchmaking.services.RetrofitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +26,15 @@ public class MainController {
 
   @Autowired
   AlgorithmService algorithmService;
+
+  @Autowired
+  AlgorithmServiceStreamlined algorithmServiceStreamlined;
+
+  @Autowired
+  SendGridTest sendGridTest;
+
+  @Autowired
+  SlackService slackService;
 
   @GetMapping(value = "/user")
   public Principal user(Principal principal) {
@@ -65,6 +73,24 @@ public class MainController {
   @RequestMapping("/matchmaking")
   public List matchmaking() {
     return algorithmService.matchmaker();
+  }
+
+  @RequestMapping("/matchmakingstreamlined")
+  public List matchmakingStreamlined() {
+    return algorithmServiceStreamlined.matchmaker();
+  }
+
+  @RequestMapping("/sendgridtest")
+  public void sendEmail(@RequestParam(name = "senderEmail") String senderEmail,
+                        @RequestParam(name = "subject") String subject,
+                        @RequestParam(name = "receiverEmail") String receiverEmail,
+                        @RequestParam(name = "emailContent") String emailContent) {
+    sendGridTest.callSendGrid(senderEmail, subject, receiverEmail, emailContent);
+  }
+
+  @RequestMapping("/slacksend")
+  public void sendSlackMessage(@RequestParam(name = "message") String message) {
+    slackService.send(message);
   }
 
 }

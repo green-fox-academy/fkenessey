@@ -18,9 +18,9 @@ public class AlgorithmServiceStreamlined {
   final private PreferenceRepository preferenceRepository;
 
   @Autowired
-  public AgorithmServiceStreamlined(ApprenticeRepository apprenticeRepository,
-                                    PartnerRepository partnerRepository,
-                                    PreferenceRepository preferenceRepository) {
+  public AlgorithmServiceStreamlined(ApprenticeRepository apprenticeRepository,
+                                     PartnerRepository partnerRepository,
+                                     PreferenceRepository preferenceRepository) {
     this.apprenticeRepository = apprenticeRepository;
     this.partnerRepository = partnerRepository;
     this.preferenceRepository = preferenceRepository;
@@ -45,7 +45,11 @@ public class AlgorithmServiceStreamlined {
 
         for (int j = 0; j < currentUserPreferenceList.size(); j++) {
 
-          if (findUserById(allPartners, currentUserPreferenceList.get(j).getSelectionId()).getMatchedUserId().equals("")) {
+          if (findUserById(allPartners, currentUserPreferenceList.get(j).getSelectionId()).getMatchedUserId().equals("")
+                  && (findPreferenceByUserAndSelectionId(
+                          allPreferences,
+                          findUserById(allPartners, currentUserPreferenceList.get(j).getSelectionId()),
+                          allApprentices.get(i).getId()) != null)) {
 
             createMatch(currentUserPreferenceList, allApprentices, allPartners, i, j);
 
@@ -53,9 +57,10 @@ public class AlgorithmServiceStreamlined {
 
             break;
 
-          } else if (findPreferenceByUserAndSelectionId(allPreferences,
+          } else if (findPreferenceByUserAndSelectionId(
+                  allPreferences,
                   findUserById(allPartners, currentUserPreferenceList.get(j).getSelectionId()),
-                  allApprentices.get(i).getId()) != null){
+                  allApprentices.get(i).getId()) != null) {
 
             int partnerSRankingOfAlreadyRecordedApprenticeMatch = findPreferenceByUserAndSelectionId(
                     allPreferences,
@@ -80,14 +85,16 @@ public class AlgorithmServiceStreamlined {
 
             int apprenticeSRankingOfCurrentPartnerMatch = currentUserPreferenceList.get(j).getRanking();
 
-            if ((partnerSRankingOfCurrentApprenticeMatch + apprenticeSRankingOfCurrentPartnerMatch <
-                    partnerSRankingOfAlreadyRecordedApprenticeMatch + apprenticeSRankingOfAlreadyRecordedPartnerMatch) &&
-                    !(allApprentices.get(i).getId()).equals(findUserById(
-                            allApprentices,
-                            findUserById(
-                                    allPartners,
-                                    currentUserPreferenceList.get(j).getSelectionId()).getMatchedUserId()
-                            ).getId())) {
+            if ((allApprentices.get(i).getId()).equals(findUserById(
+                    allApprentices,
+                    findUserById(
+                            allPartners,
+                            currentUserPreferenceList.get(j).getSelectionId()).getMatchedUserId()).getId())) {
+
+              break;
+
+            } else if (partnerSRankingOfCurrentApprenticeMatch + apprenticeSRankingOfCurrentPartnerMatch <
+                    partnerSRankingOfAlreadyRecordedApprenticeMatch + apprenticeSRankingOfAlreadyRecordedPartnerMatch) {
 
               deleteAlreadyRecordedApprenticeMatch(currentUserPreferenceList, allApprentices, allPartners, j);
 
@@ -96,14 +103,9 @@ public class AlgorithmServiceStreamlined {
               changeCounter++;
 
               break;
+
             } else if ((partnerSRankingOfCurrentApprenticeMatch + apprenticeSRankingOfCurrentPartnerMatch) ==
-                    (partnerSRankingOfAlreadyRecordedApprenticeMatch + apprenticeSRankingOfAlreadyRecordedPartnerMatch) &&
-                    !(allApprentices.get(i).getId()).equals(findUserById(
-                            allApprentices,
-                            findUserById(
-                                    allPartners,
-                                    currentUserPreferenceList.get(j).getSelectionId()).getMatchedUserId()
-                            ).getId())) {
+                    (partnerSRankingOfAlreadyRecordedApprenticeMatch + apprenticeSRankingOfAlreadyRecordedPartnerMatch)) {
 
               if (apprenticeSRankingOfCurrentPartnerMatch < apprenticeSRankingOfAlreadyRecordedPartnerMatch) {
 
@@ -111,6 +113,9 @@ public class AlgorithmServiceStreamlined {
 
                 createMatch(currentUserPreferenceList, allApprentices, allPartners, i, j);
 
+                changeCounter++;
+
+                break;
               }
             }
           }
@@ -143,8 +148,8 @@ public class AlgorithmServiceStreamlined {
     findUserById(allPartners, currentUserSPreferenceList.get(j).getSelectionId())
             .setMatchedUserId(allApprentices.get(i).getId());
 
-    if (allApprentices.get(i).getMatchedUserId() != null && !allApprentices.get(i).getMatchedUserId().equals("")) {
-      findUserById(allPartners, allApprentices.get(i).getMatchedUserId()).setMatchedUserId(null);
+    if (!allApprentices.get(i).getMatchedUserId().equals("")) {
+      findUserById(allPartners, allApprentices.get(i).getMatchedUserId()).setMatchedUserId("");
     }
 
     allApprentices.get(i)
@@ -160,7 +165,7 @@ public class AlgorithmServiceStreamlined {
     findUserById(
             allApprentices,
             findUserById(allPartners, currentUserPreferenceList.get(j).getSelectionId()).getMatchedUserId())
-            .setMatchedUserId(null);
+            .setMatchedUserId("");
 
   }
 

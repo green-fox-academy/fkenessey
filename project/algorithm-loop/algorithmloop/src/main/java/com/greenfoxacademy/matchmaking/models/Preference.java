@@ -1,6 +1,7 @@
 package com.greenfoxacademy.matchmaking.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "preference")
@@ -9,7 +10,7 @@ public class Preference {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
-  private int ranking;
+  private Integer ranking;
   @Column(name = "selection_id")
   private String selectionId;
   @ManyToOne
@@ -33,11 +34,11 @@ public class Preference {
     this.id = id;
   }
 
-  public int getRanking() {
+  public Integer getRanking() {
     return ranking;
   }
 
-  public void setRanking(int ranking) {
+  public void setRanking(Integer ranking) {
     this.ranking = ranking;
   }
 
@@ -57,4 +58,22 @@ public class Preference {
     this.user = user;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+
+    if (obj == this) return true;
+
+    if (!(obj instanceof Preference)) return false;
+
+    Preference preferenceToCompare = (Preference) obj;
+
+    return id == preferenceToCompare.id &&
+            ranking == preferenceToCompare.ranking &&
+            Objects.equals(selectionId, preferenceToCompare.selectionId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, ranking, selectionId);
+  }
 }
