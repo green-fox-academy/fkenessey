@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:text="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <title>Test</title>
+</head>
+<body>
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Partner company</th>
+                    <th>Matched Apprentice's First Name</th>
+                    <th>Matched Apprentice's Last Name</th>
+                    <th>Matched Apprentice's Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="partner, partnerIterator : ${partnerList}">
+                    <td th:text="${partner.companyName}"></td>
+                    <td th:text="${apprenticeList.findById(partner.matchedUserId).firstName}"></td>
+                    <td th:text="${apprenticeList.findById(partner.matchedUserId).lastName}"></td>
+                    <td th:text="${apprenticeList.findById(partner.matchedUserId).email}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
